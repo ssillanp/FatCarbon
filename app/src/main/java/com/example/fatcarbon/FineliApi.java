@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.security.Key;
 import java.util.*;
 
 
@@ -82,18 +83,12 @@ public class FineliApi {
                 JSONArray jsonArray = new JSONArray(json);
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject row = jsonArray.getJSONObject(i);
-                    int id = row.getInt("id");
-                    JSONObject type = row.getJSONObject("type");
-                    String typ = type.getString("code");
-                    String name = row.getString("name");
-                    String port = row.getString("ediblePortion");
-                    String ener = row.getString("energy");
+                    JSONObject name = row.getJSONObject("name");
+                    Iterator<?> keys = name.keys();
+                    while (keys.hasNext()){
+                        System.out.println(keys.next());
+                    }
 
-                    System.out.println(id);
-                    System.out.println("TYPE: " +  typ);
-                    System.out.println("NAME " + name);
-                    System.out.println("PORT " + port);
-                    System.out.println("EENE " + ener);
                 }
 
             } catch (JSONException e) {
