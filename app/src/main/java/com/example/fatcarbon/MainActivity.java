@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void testbtn(View v) {
         FineliApi api = new FineliApi();
-        for (FoodItem item:api.parseFineliByKeyword("Kaali")){
+        for (FoodItem item:api.parseFineliData("Kala")){
             System.out.println(item.getName().toString());
         }
     }

@@ -78,7 +78,7 @@ public class FineliApi {
     Method parses Food items from Fineli API Json string and creates FoodItem objects and add in list.
     Returns List of items.
      */
-    public ArrayList<FoodItem> parseFineliByKeyword(String Keyword) {
+    public ArrayList<FoodItem> parseFineliData(String Keyword) {
         URL url = null;
         try {
             url = new URL("https://fineli.fi/fineli/api/v1/foods?q=" + Keyword);
