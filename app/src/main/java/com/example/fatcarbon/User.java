@@ -1,12 +1,13 @@
 package com.example.fatcarbon;
 
+import java.io.Serializable;
 import java.util.*;
 
 
 /**
  * Class User
  */
-public class User {
+public class User implements Serializable {
 
     //
     // Fields
