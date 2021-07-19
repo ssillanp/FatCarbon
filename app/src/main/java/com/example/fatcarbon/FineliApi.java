@@ -1,6 +1,7 @@
 package com.example.fatcarbon;
 
 
+import android.util.Pair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -102,9 +103,8 @@ public class FineliApi {
                 for (int t=1; t<units.length(); t++){
                     JSONObject unit = units.getJSONObject(t);
                     JSONObject descr = (JSONObject) unit.get("description");
-                    FI.addUnit(descr.get("fi") + " "
-                            +unit.get("mass" ) + "g");
-
+                    FI.addUnit(new Pair<String, Double>(descr.get("fi").toString(),
+                            Double.parseDouble(unit.get("mass").toString())));
                 }
                 FI.setEnergy(Double.parseDouble(object.get("energy").toString()));
                 FI.setEnergyKcal(Double.parseDouble(object.get("energyKcal").toString()));

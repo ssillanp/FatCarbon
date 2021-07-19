@@ -1,12 +1,15 @@
 package com.example.fatcarbon;
 
 
+import android.util.Pair;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Class FoodItem
  */
-public class FoodItem {
+public class FoodItem implements Serializable {
 
     //
     // Fields
@@ -15,7 +18,7 @@ public class FoodItem {
     private String type;
     private String name;
     private int ediblePortion;
-    private ArrayList<String> units;
+    private ArrayList<Pair<String, Double>> units;
     private double energy;
     private double energyKcal;
     private double fat;
@@ -71,11 +74,11 @@ public class FoodItem {
         this.ediblePortion = ediblePortion;
     }
 
-    public ArrayList<String> getUnits() {
+    public ArrayList<Pair<String, Double>> getUnits() {
         return units;
     }
 
-    public void addUnit(String unit) {
+    public void addUnit(Pair<String, Double> unit) {
         this.units.add(unit);
     }
 

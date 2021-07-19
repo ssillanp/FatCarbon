@@ -1,11 +1,14 @@
 package com.example.fatcarbon;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final Context context = MainActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,10 +19,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testbtn(View v) {
-        FineliApi api = new FineliApi();
-        for (FoodItem item:api.parseFineliData("Kala")){
-            System.out.println(item.getName().toString());
-        }
+//        User usr = new User();
+//        DataWriter dw = new DataWriter(context);
+//        dw.writeItems(usr);
+//        User iii = (User) dw.readItems();
+//        System.out.println(iii.getUsername());
+            FineliApi api = new FineliApi();
+            for (FoodItem item:api.parseFineliData("Kala")){
+                System.out.println(item.getName().toString());
+            }
     }
 
-}
+
+
+    }
+

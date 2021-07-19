@@ -1,7 +1,6 @@
 package com.example.fatcarbon;
 
 import java.io.Serializable;
-import java.util.*;
 
 
 /**
@@ -13,7 +12,7 @@ public class User implements Serializable {
     // Fields
     //
 
-    private String username;
+    private final String username;
     private PasswordHasher passwordHasher;
     private int age;
     private WeightDiary weightDiary;
@@ -26,6 +25,10 @@ public class User implements Serializable {
     //
     // Constructors
     //
+    public User() {
+        username = "test";
+    }
+
     public User (String user, PasswordHasher hasher) {
         username = user;
         passwordHasher = hasher;

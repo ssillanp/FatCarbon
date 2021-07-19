@@ -1,11 +1,12 @@
 package com.example.fatcarbon;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Class Diary
  */
-abstract public class Diary {
+abstract public class Diary implements Serializable {
 
     //
     // Fields
