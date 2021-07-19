@@ -1,13 +1,14 @@
 package com.example.fatcarbon;
 
+import java.io.Serializable;
 import java.sql.Time;
-import java.util.*;
+import java.util.Date;
 
 
 /**
  * Class ActivityItem
  */
-public class ActivityItem {
+public class ActivityItem implements Serializable {
 
     //
     // Fields

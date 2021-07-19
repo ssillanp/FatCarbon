@@ -1,12 +1,13 @@
 package com.example.fatcarbon;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.Date;
 
 
 /**
  * Class Weighting
  */
-public class Weighting {
+public class Weighting implements Serializable {
 
     //
     // Fields
@@ -18,7 +19,13 @@ public class Weighting {
     //
     // Constructors
     //
-    public Weighting () { };
+
+    public Weighting() {}
+
+    public Weighting (Date day, double weight) {
+        date = day;
+        weightValue = weight;
+    }
     
     //
     // Methods

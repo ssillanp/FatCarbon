@@ -25,12 +25,17 @@ public class PasswordHasher implements Serializable {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        md.update(salt);
-            byte[] bytes = md.digest(password.getBytes());
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
+        if (md != null) {
+            md.update(salt);
+        }
+        byte[] bytes = new byte[0];
+        if (md != null) {
+            bytes = md.digest(password.getBytes());
+        }
+        StringBuilder sb = new StringBuilder();
+        for (byte aByte : bytes) {
+            sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
+        }
             generatedPassword = sb.toString();
 
         return generatedPassword;

@@ -103,7 +103,7 @@ public class FineliApi {
                 for (int t=1; t<units.length(); t++){
                     JSONObject unit = units.getJSONObject(t);
                     JSONObject descr = (JSONObject) unit.get("description");
-                    FI.addUnit(new Pair<String, Double>(descr.get("fi").toString(),
+                    FI.addUnit(new Pair<>(descr.get("fi").toString(),
                             Double.parseDouble(unit.get("mass").toString())));
                 }
                 FI.setEnergy(Double.parseDouble(object.get("energy").toString()));

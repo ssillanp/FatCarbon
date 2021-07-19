@@ -19,15 +19,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testbtn(View v) {
-//        User usr = new User();
-//        DataWriter dw = new DataWriter(context);
-//        dw.writeItems(usr);
-//        User iii = (User) dw.readItems();
-//        System.out.println(iii.getUsername());
-            FineliApi api = new FineliApi();
-            for (FoodItem item:api.parseFineliData("Kala")){
-                System.out.println(item.getName().toString());
-            }
+        UserDataReader rd = new UserDataReader(context);
+        User user = (User) rd.readItem("Sama");
+        System.out.println(user.validateUser("Sama", "Password124"));
+        System.out.println(user.getPasswordHasher().validatePassword("Password124"));
+
+//        PasswordHasher pw = new PasswordHasher("Password123");
+//        PasswordHasher pw1 = new PasswordHasher("Password124");
+//        User usr = new User("Sami", pw);
+//        User usr1 = new User("Sama", pw1);
+//        UserDataWriter dw = new UserDataWriter(context);
+//        dw.writeItem(usr);
+//        dw.writeItem(usr1);
+
+
+
+//            FineliApi api = new FineliApi();
+//            for (FoodItem item:api.parseFineliData("Kala")){
+//                System.out.println(item.getName().toString());
+//            }
     }
 
 
