@@ -37,7 +37,10 @@ public class FoodItem implements Serializable {
     //
     // Constructors
     //
-    public FoodItem (int ID) {
+
+    FoodItem () {}
+
+    FoodItem (int ID) {
         id=ID;
         units = new ArrayList<>();
     };
