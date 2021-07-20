@@ -11,7 +11,7 @@ public class Meal {
     //
     // Fields
     //
-    private enum MealTypes {
+    public enum MealTypes {
         BREAKFAST, LUNCH, DINNER, SNACK
     }
 
@@ -23,7 +23,11 @@ public class Meal {
     //
     // Constructors
     //
-    public Meal() {
+    Meal() {
+    }    
+    Meal(MealTypes typeIn, Date day) {
+        type = typeIn;
+        date = day;
     }
 
     ;
@@ -89,6 +93,10 @@ public class Meal {
      */
     public ArrayList<FoodItem> getFoodItems() {
         return foodItems;
+    }
+    
+    public void addFoodItems(FoodItem item) {
+        foodItems.add(item);
     }
 
     /**

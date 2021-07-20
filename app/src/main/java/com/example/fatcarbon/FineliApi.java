@@ -26,7 +26,7 @@ public class FineliApi {
     //
     // Constructors
     //
-    public FineliApi() {
+    FineliApi() {
     }
 
     ;

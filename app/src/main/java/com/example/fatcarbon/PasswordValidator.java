@@ -14,7 +14,7 @@ public class PasswordValidator {
     //
     // Constructors
     //
-    public PasswordValidator() {
+    PasswordValidator() {
 
     }
 

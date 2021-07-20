@@ -15,23 +15,43 @@ public class User implements Serializable {
     private final String username;
     private PasswordHasher passwordHasher;
     private int age;
-    private WeightDiary weightDiary;
-    private FoodDiary foodDiary;
-    private ActivityDiary activityDiary;
+//    private WeightDiary weightDiary;
+//    private FoodDiary foodDiary;
+//    private ActivityDiary activityDiary;
     private double height;
-    private String city;
-    private boolean smoking;
+    private double weight;
+    private double daily_calorie_base;
+    private actLevel activityLevel;
+    private sexes sex;
+
+
+
+    public enum sexes {MALE, FEMALE}
+    public enum actLevel {
+        EI_AKTIIVINEN (1.3),
+        SATUNNAINEN (1.5),
+        SAANNOLLINEN (1.7),
+        AKTIIVINEN (1.9),
+        AKTIIVI_URHEILIJA (2.2);
+
+        private final double coeff;
+
+        actLevel(double v) {
+            coeff = v;
+        }
+    }
     
     //
     // Constructors
     //
-    public User() {
+    User() {
         username = "test";
     }
 
-    public User (String user, PasswordHasher hasher) {
+    User (String user, PasswordHasher hasher) {
         username = user;
         passwordHasher = hasher;
+//        foodDiary = new FoodDiary();
     }
 
     //
@@ -78,53 +98,69 @@ public class User implements Serializable {
         return age;
     }
 
-    /**
-     * Set the value of weightDiary
-     * @param newVar the new value of weightDiary
-     */
-    public void setWeightDiary (WeightDiary newVar) {
-        weightDiary = newVar;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
-    /**
-     * Get the value of weightDiary
-     * @return the value of weightDiary
-     */
-    public WeightDiary getWeightDiary () {
-        return weightDiary;
+
+    public void setActivityLevel(actLevel level){
+        activityLevel = level;
     }
 
-    /**
-     * Set the value of foodDiary
-     * @param newVar the new value of foodDiary
-     */
-    public void setFoodDiary (FoodDiary newVar) {
-        foodDiary = newVar;
+    public void setSex(sexes sx){
+        sex = sx;
     }
 
-    /**
-     * Get the value of foodDiary
-     * @return the value of foodDiary
-     */
-    public FoodDiary getFoodDiary () {
-        return foodDiary;
+    public double calculateBaseCalories(){
+        if (sex == sexes.FEMALE){
+            return (447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age)) * activityLevel.coeff;
+        } else {
+            return (88.362 +(13.397* weight) + (4.799*height) - (85.677*age)) * activityLevel.coeff;
+        }
     }
-
-    /**
-     * Set the value of activityDiary
-     * @param newVar the new value of activityDiary
-     */
-    public void setActivityDiary (ActivityDiary newVar) {
-        activityDiary = newVar;
-    }
-
-    /**
-     * Get the value of activityDiary
-     * @return the value of activityDiary
-     */
-    public ActivityDiary getActivityDiary () {
-        return activityDiary;
-    }
+//    public void setWeightDiary (WeightDiary newVar) {
+//        weightDiary = newVar;
+//    }
+//
+//    /**
+//     * Get the value of weightDiary
+//     * @return the value of weightDiary
+//     */
+//    public WeightDiary getWeightDiary () {
+//        return weightDiary;
+//    }
+//
+//    /**
+//     * Set the value of foodDiary
+//     * @param newVar the new value of foodDiary
+//     */
+//    public void setFoodDiary (FoodDiary newVar) {
+//        foodDiary = newVar;
+//    }
+//
+//    /**
+//     * Get the value of foodDiary
+//     * @return the value of foodDiary
+//     */
+//    public FoodDiary getFoodDiary () {
+//        return foodDiary;
+//    }
+//
+//    /**
+//     * Set the value of activityDiary
+//     * @param newVar the new value of activityDiary
+//     */
+//    public void setActivityDiary (ActivityDiary newVar) {
+//        activityDiary = newVar;
+//    }
+//
+//    /**
+//     * Get the value of activityDiary
+//     * @return the value of activityDiary
+//     */
+//    public ActivityDiary getActivityDiary () {
+//        return activityDiary;
+//    }
 
     /**
      * Set the value of height
@@ -142,37 +178,9 @@ public class User implements Serializable {
         return height;
     }
 
-    /**
-     * Set the value of city
-     * @param newVar the new value of city
-     */
-    public void setCity (String newVar) {
-        city = newVar;
-    }
 
-    /**
-     * Get the value of city
-     * @return the value of city
-     */
-    public String getCity () {
-        return city;
-    }
 
-    /**
-     * Set the value of smoking
-     * @param newVar the new value of smoking
-     */
-    public void setSmoking (boolean newVar) {
-        smoking = newVar;
-    }
 
-    /**
-     * Get the value of smoking
-     * @return the value of smoking
-     */
-    public boolean getSmoking () {
-        return smoking;
-    }
 
     //
     // Other methods

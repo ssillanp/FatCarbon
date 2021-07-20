@@ -23,7 +23,7 @@ public class UserDataReader {
     //
     // Constructors
     //
-    public UserDataReader(Context ctx) {
+    UserDataReader(Context ctx) {
         context = ctx;
     };
     

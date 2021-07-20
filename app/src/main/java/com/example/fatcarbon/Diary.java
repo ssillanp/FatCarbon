@@ -6,18 +6,20 @@ import java.util.ArrayList;
 /**
  * Class Diary
  */
-abstract public class Diary implements Serializable {
+public class Diary implements Serializable {
 
     //
     // Fields
     //
 
-    private ArrayList<Object> entries;
+    protected ArrayList<DiaryItem> entries;
     
     //
     // Constructors
     //
-    public Diary () { };
+    Diary () {
+        entries = new ArrayList();
+    };
     
     //
     // Methods
@@ -33,9 +35,9 @@ abstract public class Diary implements Serializable {
      * Get the value of Entries
      * @return the value of Entries
      */
-    public ArrayList<Object> getEntries () {
-        return entries;
-    }
+//    public ArrayList<Object> getEntries () {
+//        return entries;
+//    }
 
     //
     // Other methods
@@ -44,10 +46,10 @@ abstract public class Diary implements Serializable {
     /**
      * @param        entry
      */
-    public void addEntry(Object entry)
-    {
-        entries.add(entry);
-    }
+//    public void addEntry(Object entry)
+//    {
+//        entries.add(entry);
+//    }
 
 
 }

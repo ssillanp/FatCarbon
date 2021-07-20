@@ -22,7 +22,7 @@ public class ActivityItem implements Serializable {
     //
     // Constructors
     //
-    public ActivityItem () { };
+    ActivityItem() { };
     
     //
     // Methods

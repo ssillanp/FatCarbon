@@ -1,6 +1,6 @@
 package com.example.fatcarbon;
 
-import java.util.*;
+import java.util.Date;
 
 
 /**
@@ -12,12 +12,12 @@ public class FoodDiary extends Diary {
     // Fields
     //
 
-    
     //
     // Constructors
     //
-    public FoodDiary () { };
-    
+    FoodDiary () {
+        super();
+    }
     //
     // Methods
     //
@@ -26,6 +26,11 @@ public class FoodDiary extends Diary {
     //
     // Accessor methods
     //
+
+    public void addItem(Meal item){
+        entries.add(item);
+    }
+
 
     //
     // Other methods
