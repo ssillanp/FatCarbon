@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,15 +17,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-    }
 
-    public void testbtn(View v) {
+        }
 
-        FoodItem fi = new FoodItem();
-        DiaryItem di = new DiaryItem(fi);
-        System.out.println(di.getItem().getClass());
-        System.out.println(di.getItem() instanceof FoodItem);
-        System.out.println(di.getDate());
+
+
+    public void login(View v) {
+        EditText userName = findViewById(R.id.editTextUserName);
+        EditText passWord = findViewById(R.id.editTextPasswd);
+        PasswordValidator pv = new PasswordValidator();
+        System.out.println("HERE");
+        if (userName.length() == 0){
+            userName.setError(getString(R.string.pl_enter_uname));
+        }
+        if (!pv.validatePassword(passWord.getText().toString())){
+            passWord.setError(getString(R.string.pl_enter_password));
+        }
+
+//        FoodItem fi = new FoodItem();
+//        DiaryItem di = new DiaryItem(fi);
+//        System.out.println(di.getItem().getClass());
+//        System.out.println(di.getItem() instanceof FoodItem);
+//        System.out.println(di.getDate());
 
         /**
             Shared prefs testing
