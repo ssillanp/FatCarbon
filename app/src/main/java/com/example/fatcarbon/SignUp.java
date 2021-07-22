@@ -47,14 +47,7 @@ public class SignUp extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
     }
-//    public void toLogin(View v){
-//        Fragment frag = new LoginScreen();
-//        FragmentManager manager = getFragmentManager();
-//        FragmentTransaction transaction = manager.beginTransaction();
-//        transaction.replace(R.id.main_ragment_window, frag);
-//        transaction.commit();
-//
-//    }
+
 
 
 

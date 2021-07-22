@@ -4,7 +4,6 @@ package com.example.fatcarbon;
 import android.content.Context;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
@@ -36,10 +35,6 @@ public class UserDataReader {
         FileInputStream fis = null;
         try {
             fis = context.openFileInput(username + ".dat");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
             ObjectInputStream ois = new ObjectInputStream(fis);
             Object item = (Object) ois.readObject();
             if (fis != null) {
