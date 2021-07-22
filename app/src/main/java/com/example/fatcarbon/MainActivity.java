@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     public void login(View v) {
         EditText userName = findViewById(R.id.editTextUserName);
         EditText passWord = findViewById(R.id.editTextPasswd);
-        PasswordValidator pv = new PasswordValidator();
         User user = (User) new UserDataReader(context).readItem(userName.getText().toString());
         if (user != null) {
             if (user.getPasswordHasher().validatePassword(passWord.getText().toString())){
@@ -67,27 +66,31 @@ public class MainActivity extends AppCompatActivity {
             uname.setError(getString(R.string.pl_enter_uname)); //TODO lisää tarkastus jos user on olemassa
             dataOK = false;
         }
-        if (!pv.validatePassword(password.getText().toString())){
-            password.setError(getString(R.string.pl_enter_password));
-            dataOK = false;
-        }
+//        if (!pv.validatePassword(password.getText().toString())){
+//            password.setError(getString(R.string.pl_enter_password));
+//            dataOK = false;
+//        }
         if (dataOK){
             PasswordHasher hasher = new PasswordHasher(password.getText().toString());
             User user = new User(uname.getText().toString(), hasher);
-            user.setHeight(Double.parseDouble(height.getText().toString()));
-            user.setWeight(Double.parseDouble(weight.getText().toString()));
-            user.setAge(Integer.parseInt(height.getText().toString()));
-            switch (Integer.parseInt(height.getText().toString())){
-                case 0: user.setActivityLevel(User.actLevel.EI_AKTIIVINEN);
-                case 1: user.setActivityLevel(User.actLevel.SATUNNAINEN);
-                case 2: user.setActivityLevel(User.actLevel.SAANNOLLINEN);
-                case 3: user.setActivityLevel(User.actLevel.AKTIIVINEN);
-                case 4: user.setActivityLevel(User.actLevel.AKTIIVI_URHEILIJA);
-            }
-            if (female.isSelected()){
-                user.setSex(User.sexes.FEMALE);
-            } else {
-                user.setSex(User.sexes.MALE);
+            try {
+                user.setHeight(Double.parseDouble(height.getText().toString()));
+                user.setWeight(Double.parseDouble(weight.getText().toString()));
+                user.setAge(Integer.parseInt(height.getText().toString()));
+                switch (Integer.parseInt(height.getText().toString())){
+                    case 0: user.setActivityLevel(User.actLevel.EI_AKTIIVINEN);
+                    case 1: user.setActivityLevel(User.actLevel.SATUNNAINEN);
+                    case 2: user.setActivityLevel(User.actLevel.SAANNOLLINEN);
+                    case 3: user.setActivityLevel(User.actLevel.AKTIIVINEN);
+                    case 4: user.setActivityLevel(User.actLevel.AKTIIVI_URHEILIJA);
+                }
+                if (female.isSelected()){
+                    user.setSex(User.sexes.FEMALE);
+                } else {
+                    user.setSex(User.sexes.MALE);
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
             }
             UserDataWriter udw = new UserDataWriter(context);
             udw.writeItem(user);
