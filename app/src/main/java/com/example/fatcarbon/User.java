@@ -28,11 +28,11 @@ public class User implements Serializable {
 
     public enum sexes {MALE, FEMALE}
     public enum actLevel {
-        EI_AKTIIVINEN (1.3),
-        SATUNNAINEN (1.5),
-        SAANNOLLINEN (1.7),
-        AKTIIVINEN (1.9),
-        AKTIIVI_URHEILIJA (2.2);
+        INACTIVE (1.3),
+        OCCASIONAL(1.5),
+        REGULAR(1.7),
+        ACTIVE(1.9),
+        PRO(2.2);
 
         private final double coeff;
 

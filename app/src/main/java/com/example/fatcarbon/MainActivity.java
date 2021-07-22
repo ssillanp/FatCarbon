@@ -46,13 +46,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         } else {
-            Snackbar.make(v, "The user does not exist", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(v, R.string.user_not_exist, Snackbar.LENGTH_LONG).show();
         }
 
     }
 
     public void submit(View v) {
-        boolean dataOK = true;
         EditText uname = findViewById(R.id.editTextSetUserName);
         EditText password = findViewById(R.id.editTextSetPassword);
         EditText height = findViewById(R.id.editTextHeight);
@@ -62,8 +61,13 @@ public class MainActivity extends AppCompatActivity {
         RadioButton female = findViewById(R.id.checkBoxFemale);
         RadioButton male = findViewById(R.id.checkBoxMale);
         PasswordValidator pv = new PasswordValidator();
+        boolean dataOK = true;
+        if (new UserDataReader(context).readItem(uname.getText().toString()) != null){
+            uname.setError(getString(R.string.user_exists));
+            dataOK = false;
+        }
         if (uname.length() == 0){
-            uname.setError(getString(R.string.pl_enter_uname)); //TODO lisää tarkastus jos user on olemassa
+            uname.setError(getString(R.string.pl_enter_uname));
             dataOK = false;
         }
 //        if (!pv.validatePassword(password.getText().toString())){
@@ -78,11 +82,11 @@ public class MainActivity extends AppCompatActivity {
                 user.setWeight(Double.parseDouble(weight.getText().toString()));
                 user.setAge(Integer.parseInt(height.getText().toString()));
                 switch (Integer.parseInt(height.getText().toString())){
-                    case 0: user.setActivityLevel(User.actLevel.EI_AKTIIVINEN);
-                    case 1: user.setActivityLevel(User.actLevel.SATUNNAINEN);
-                    case 2: user.setActivityLevel(User.actLevel.SAANNOLLINEN);
-                    case 3: user.setActivityLevel(User.actLevel.AKTIIVINEN);
-                    case 4: user.setActivityLevel(User.actLevel.AKTIIVI_URHEILIJA);
+                    case 0: user.setActivityLevel(User.actLevel.INACTIVE);
+                    case 1: user.setActivityLevel(User.actLevel.OCCASIONAL);
+                    case 2: user.setActivityLevel(User.actLevel.REGULAR);
+                    case 3: user.setActivityLevel(User.actLevel.ACTIVE);
+                    case 4: user.setActivityLevel(User.actLevel.PRO);
                 }
                 if (female.isSelected()){
                     user.setSex(User.sexes.FEMALE);
@@ -98,13 +102,12 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("currentUser", user);
             startActivity(intent);
         } else {
-            Snackbar.make(v, "The username or password is not valid", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(v, R.string.signup_error_snackbar_msg, Snackbar.LENGTH_LONG).show();
         }
 
     }
 
     public void toSubmit(View v) {
-        System.out.println("PressMA");
         Fragment frag = new SignUp();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.main_ragment_window, frag);
