@@ -10,8 +10,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.main_ragment_window, frag);
         transaction.commit();
+
+
 
     }
 
@@ -51,16 +53,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submit(View v) {
+        boolean dataOK = true;
         EditText uname = findViewById(R.id.editTextSetUserName);
         EditText password = findViewById(R.id.editTextSetPassword);
         EditText height = findViewById(R.id.editTextHeight);
         EditText weight = findViewById(R.id.editTextWeight);
         EditText age = findViewById(R.id.editTextAge);
         SeekBar act_level = findViewById(R.id.seekBarActLevel);
-        CheckBox female = findViewById(R.id.checkBoxFemale);
-        CheckBox male = findViewById(R.id.checkBoxMale);
-        Intent intent = new Intent(this, MainActivityLoggedIn.class);
-        startActivity(intent);
+        RadioButton female = findViewById(R.id.checkBoxFemale);
+        RadioButton male = findViewById(R.id.checkBoxMale);
+        PasswordValidator pv = new PasswordValidator();
+        if (uname.length() == 0){
+            uname.setError(getString(R.string.pl_enter_uname)); //TODO lisää tarkastus jos user on olemassa
+            dataOK = false;
+        }
+        if (!pv.validatePassword(password.getText().toString())){
+            password.setError(getString(R.string.pl_enter_password));
+            dataOK = false;
+        }
+        if (dataOK){
+            PasswordHasher hasher = new PasswordHasher(password.getText().toString());
+            User user = new User(uname.getText().toString(), hasher);
+            user.setHeight(Double.parseDouble(height.getText().toString()));
+            user.setWeight(Double.parseDouble(weight.getText().toString()));
+            user.setAge(Integer.parseInt(height.getText().toString()));
+            switch (Integer.parseInt(height.getText().toString())){
+                case 0: user.setActivityLevel(User.actLevel.EI_AKTIIVINEN);
+                case 1: user.setActivityLevel(User.actLevel.SATUNNAINEN);
+                case 2: user.setActivityLevel(User.actLevel.SAANNOLLINEN);
+                case 3: user.setActivityLevel(User.actLevel.AKTIIVINEN);
+                case 4: user.setActivityLevel(User.actLevel.AKTIIVI_URHEILIJA);
+            }
+            if (female.isSelected()){
+                user.setSex(User.sexes.FEMALE);
+            } else {
+                user.setSex(User.sexes.MALE);
+            }
+            UserDataWriter udw = new UserDataWriter(context);
+            udw.writeItem(user);
+            Intent intent = new Intent(this, MainActivityLoggedIn.class);
+            intent.putExtra("currentUser", user);
+            startActivity(intent);
+        } else {
+            Snackbar.make(v, "The username or password is not valid", Snackbar.LENGTH_LONG).show();
+        }
+
     }
 
     public void toSubmit(View v) {

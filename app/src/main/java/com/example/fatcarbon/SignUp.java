@@ -7,12 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SignUp#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SignUp extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -44,8 +42,28 @@ public class SignUp extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        SeekBar acLevel = view.findViewById(R.id.seekBarActLevel);
+        TextView acLevelTxt = view.findViewById(R.id.textViewActLevel);
 
-        super.onViewCreated(view, savedInstanceState);
+        acLevelTxt.setText(String.valueOf(acLevel.getProgress()));
+        acLevel.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                acLevelTxt.setText(String.valueOf(acLevel.getProgress()));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+       super.onViewCreated(view, savedInstanceState);
     }
 
 

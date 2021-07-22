@@ -10,8 +10,10 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="75dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/editTextSetUserName"
@@ -172,33 +174,37 @@
             android:id="@+id/buttonSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="160dp"
+            android:layout_marginEnd="88dp"
             android:onClick="submit"
             android:text="@string/submit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBarActLevel"
-            app:layout_constraintVertical_bias="0.348"
+            app:layout_constraintVertical_bias="0.264"
             tools:ignore="OnClick" />
 
-        <CheckBox
-            android:id="@+id/checkBoxFemale"
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="136dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/female"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintEnd_toStartOf="@+id/buttonSubmit"
+            app:layout_constraintHorizontal_bias="0.84"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBarActLevel" />
+            app:layout_constraintTop_toBottomOf="@+id/seekBarActLevel">
 
-        <CheckBox
-            android:id="@+id/checkBoxMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="@string/male"
-            app:layout_constraintStart_toEndOf="@+id/checkBoxFemale"
-            app:layout_constraintTop_toTopOf="@+id/checkBoxFemale" />
+            <RadioButton
+                android:id="@+id/checkBoxFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female" />
+
+            <RadioButton
+                android:id="@+id/checkBoxMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male" />
+
+        </RadioGroup>
 
         <TextView
             android:id="@+id/textView5"
@@ -210,6 +216,18 @@
             app:layout_constraintBottom_toTopOf="@+id/button4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="269dp"
+            tools:layout_editor_absoluteY="477dp" />
+
+        <android.support.constraint.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="checkBoxFemale,checkBoxMale" />
 
     </android.support.constraint.ConstraintLayout>
 
