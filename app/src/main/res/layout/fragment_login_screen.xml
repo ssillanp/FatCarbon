@@ -21,7 +21,7 @@
             android:id="@+id/button"
             android:layout_width="500px"
             android:layout_height="wrap_content"
-            android:onClick="login"
+            android:onClick="toSubmit"
             android:text="@string/signup"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

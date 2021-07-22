@@ -1,15 +1,19 @@
 package com.example.fatcarbon;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
     private final Context context = MainActivity.this;
+    FragmentManager manager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,22 +21,49 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        Fragment frag = new LoginScreen();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.main_ragment_window, frag);
+        transaction.commit();
 
         }
 
+    
+    public void login(View v){
+        Intent intent = new Intent(this, MainActivityLoggedIn.class);
+        startActivity(intent);
+    }
+
+    public void toSubmit(View v){
+        System.out.println("PressMA");
+        Fragment frag = new SignUp();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.main_ragment_window, frag);
+        transaction.commit();
+    }
+
+    public void toLogin(View v){
+        Fragment frag = new LoginScreen();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.main_ragment_window, frag);
+        transaction.commit();
+
+    }
 
 
-    public void login(View v) {
-        EditText userName = findViewById(R.id.editTextUserName);
-        EditText passWord = findViewById(R.id.editTextPasswd);
-        PasswordValidator pv = new PasswordValidator();
-        System.out.println("HERE");
-        if (userName.length() == 0){
-            userName.setError(getString(R.string.pl_enter_uname));
-        }
-        if (!pv.validatePassword(passWord.getText().toString())){
-            passWord.setError(getString(R.string.pl_enter_password));
-        }
+
+
+//    public void login(View v) {
+//        EditText userName = findViewById(R.id.editTextUserName);
+//        EditText passWord = findViewById(R.id.editTextPasswd);
+//        PasswordValidator pv = new PasswordValidator();
+//        System.out.println("HERE");
+//        if (userName.length() == 0){
+//            userName.setError(getString(R.string.pl_enter_uname));
+//        }
+//        if (!pv.validatePassword(passWord.getText().toString())){
+//            passWord.setError(getString(R.string.pl_enter_password));
+//        }
 
 //        FoodItem fi = new FoodItem();
 //        DiaryItem di = new DiaryItem(fi);
@@ -75,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 //        for (FoodItem item:api.parseFineliData("Kala")){
 //            System.out.println(item.getName().toString());
 //        }
-    }
+//    }
 
 
 
