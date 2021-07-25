@@ -20,13 +20,21 @@ public class FineliApi {
     // Fields
     //
 
-    private URL keywordSearchUrl;
+    private URL url;
+    private final String keyword;
 
 
     //
     // Constructors
     //
-    FineliApi() {
+    public FineliApi(String keywrd) {
+        keyword = keywrd;
+        url = null;
+        try {
+            url = new URL("https://fineli.fi/fineli/api/v1/foods?q=" + keyword);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     ;
@@ -77,13 +85,8 @@ public class FineliApi {
     Method parses Food items from Fineli API Json string and creates FoodItem objects and add in list.
     Returns List of items.
      */
-    public ArrayList<FoodItem> parseFineliData(String Keyword) {
-        URL url = null;
-        try {
-            url = new URL("https://fineli.fi/fineli/api/v1/foods?q=" + Keyword);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+    public ArrayList<FoodItem> parseFineliData() {
+
         JsonReader jr = new JsonReader(url);
         String json = jr.getResponse();
 
@@ -109,8 +112,8 @@ public class FineliApi {
                 for (int t = 1; t < units.length(); t++) {
                     JSONObject unit = units.getJSONObject(t);
                     JSONObject descr = (JSONObject) unit.get("description");
-                    foodItem.addUnit(new Pair<>(descr.get("fi").toString(),
-                            Double.parseDouble(unit.get("mass").toString())));
+                    foodItem.addUnit(new String[]{descr.get("fi").toString(),
+                            (unit.get("mass").toString())});
                 }
 
                 foodItem.setEnergy(Double.parseDouble(object.get("energy").toString()));
@@ -134,6 +137,15 @@ public class FineliApi {
             e.printStackTrace();
         }
         return resultList;
+    }
+
+    public ArrayList<String> parseFineliDataStr(){
+        ArrayList<String> list = new ArrayList<>();
+        ArrayList<FoodItem> itemsList =  parseFineliData();
+        for (FoodItem item:itemsList){
+            list.add(item.getName());
+        }
+        return list;
     }
 
 

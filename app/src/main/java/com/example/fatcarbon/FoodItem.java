@@ -1,8 +1,6 @@
 package com.example.fatcarbon;
 
 
-import android.util.Pair;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -18,7 +16,7 @@ public class FoodItem implements Serializable {
     private String type;
     private String name;
     private int ediblePortion;
-    private ArrayList<Pair<String, Double>> units;
+    private ArrayList<String[]> units;
     private double energy;
     private double energyKcal;
     private double fat;
@@ -38,7 +36,9 @@ public class FoodItem implements Serializable {
     // Constructors
     //
 
-    FoodItem () {}
+    FoodItem () {
+        units = new ArrayList<>();
+    }
 
     FoodItem (int ID) {
         id=ID;
@@ -77,13 +77,14 @@ public class FoodItem implements Serializable {
         this.ediblePortion = ediblePortion;
     }
 
-    public ArrayList<Pair<String, Double>> getUnits() {
+    public ArrayList<String[]> getUnits() {
         return units;
     }
 
-    public void addUnit(Pair<String, Double> unit) {
+    public void addUnit(String[] unit) {
         this.units.add(unit);
     }
+
 
     public double getEnergy() {
         return energy;

@@ -38,10 +38,13 @@ public class MainActivity extends AppCompatActivity {
     public void login(View v) {
         EditText userName = findViewById(R.id.editTextUserName);
         EditText passWord = findViewById(R.id.editTextPasswd);
+        userName.setText("Sami");
+        passWord.setText("aaa");
         User user = (User) new UserDataReader(context).readItem(userName.getText().toString());
         if (user != null) {
             if (user.getPasswordHasher().validatePassword(passWord.getText().toString())){
                 Intent intent = new Intent(this, MainActivityLoggedIn.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.putExtra("currentUser", user);
                 startActivity(intent);
             }
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
             UserDataWriter udw = new UserDataWriter(context);
             udw.writeItem(user);
             Intent intent = new Intent(this, MainActivityLoggedIn.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.putExtra("currentUser", user);
             startActivity(intent);
         } else {

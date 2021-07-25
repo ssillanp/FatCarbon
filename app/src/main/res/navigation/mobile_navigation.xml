@@ -12,14 +12,20 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.fatcarbon.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_weights"
+        android:name="com.example.fatcarbon.ui.weights.WeightsFragment"
+        android:label="@string/menu_weight_diary"
+        tools:layout="@layout/fragment_weights" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.fatcarbon.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_foods"
+        android:name="com.example.fatcarbon.ui.foods.FoodsFragment"
+        android:label="@string/menu_foods_diary"
+        tools:layout="@layout/fragment_foods" />
+
+    <fragment
+        android:id="@+id/nav_activity"
+        android:name="com.example.fatcarbon.ui.activity.ActivityFragment"
+        android:label="@string/menu_activity_diary"
+        tools:layout="@layout/fragment_activity" />
 </navigation>

@@ -1,22 +1,30 @@
 package com.example.fatcarbon;
 
 import android.os.Bundle;
-import android.view.View;
-import android.view.Menu;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import java.util.ArrayList;
 
 public class MainActivityLoggedIn extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    FragmentManager manager = getSupportFragmentManager();
+
 
    
     @Override
@@ -38,12 +46,14 @@ public class MainActivityLoggedIn extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_weights, R.id.nav_foods, R.id.nav_activity)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
     }
 
     @Override
@@ -58,5 +68,25 @@ public class MainActivityLoggedIn extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void foodSearch(View view) {
+        EditText keyWord = findViewById(R.id.editTextFoodKeyword);
+        FineliApi searchApi = new FineliApi(keyWord.getText().toString());
+        ArrayList<FoodItem> listItems = (searchApi.parseFineliData());
+        for (FoodItem item:listItems){
+            System.out.println(item.getName() + "\n");
+            for (String[] unit:item.getUnits()){
+                System.out.println(unit[0] + "\tyksikkö: " + unit[1] + "g");
+            }
+        }
+        Bundle args = new Bundle();
+        args.putSerializable("list", listItems);
+        Fragment frag = new FoodSearchFragment();
+        frag.setArguments(args);
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.foodsFragmentLayout, frag);
+        transaction.commit();
+
     }
 }
