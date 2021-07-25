@@ -35,9 +35,9 @@ public class Diary implements Serializable {
      * Get the value of Entries
      * @return the value of Entries
      */
-//    public ArrayList<Object> getEntries () {
-//        return entries;
-//    }
+    public ArrayList<DiaryItem> getEntries () {
+        return entries;
+    }
 
     //
     // Other methods
@@ -46,10 +46,10 @@ public class Diary implements Serializable {
     /**
      * @param        entry
      */
-//    public void addEntry(Object entry)
-//    {
-//        entries.add(entry);
-//    }
+    public void addEntry(DiaryItem entry)
+    {
+        entries.add(entry);
+    }
 
 
 }

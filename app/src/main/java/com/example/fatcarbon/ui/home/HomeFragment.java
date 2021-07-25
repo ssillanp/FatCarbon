@@ -24,7 +24,7 @@ public class HomeFragment extends Fragment {
 //
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         Intent intent = getActivity().getIntent();
-        User user = (User) intent.getSerializableExtra("currentUser");
+        User user = (User) intent.getSerializableExtra("user");
         TextView test = root.findViewById(R.id.text_home);
         test.setText("Welcome " + user.getUsername());
         TextView date = root.findViewById(R.id.text_home_date);

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class FoodSearchFragment extends Fragment {
 
     RecyclerView recyclerViewFoodSearch;
+    User user;
 
      public FoodSearchFragment() {
         // Required empty public constructor
@@ -40,9 +41,12 @@ public class FoodSearchFragment extends Fragment {
 
 
     public void onViewCreated(View view, Bundle savedInstanceState){
+        if (getArguments() != null) {
+            user = (User) getArguments().getSerializable("user");
+        }
         recyclerViewFoodSearch = getView().findViewById(R.id.recyclerFoodSearchResults);
         ArrayList<FoodItem> listItems = (ArrayList<FoodItem>) getArguments().getSerializable("list");
-        MyAdapter adapter = new MyAdapter(getActivity(), listItems);
+        FoodListAdapter adapter = new FoodListAdapter(getActivity(), listItems, user);
         recyclerViewFoodSearch.setAdapter(adapter);
         recyclerViewFoodSearch.setLayoutManager(new LinearLayoutManager(getActivity()));
     }

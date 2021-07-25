@@ -15,9 +15,7 @@ public class User implements Serializable {
     private final String username;
     private PasswordHasher passwordHasher;
     private int age;
-//    private WeightDiary weightDiary;
-//    private FoodDiary foodDiary;
-//    private ActivityDiary activityDiary;
+    private Diary diary;
     private double height;
     private double weight;
     private double daily_calorie_base;
@@ -46,12 +44,13 @@ public class User implements Serializable {
     //
     User() {
         username = "test";
+        diary = new Diary();
     }
 
     User (String user, PasswordHasher hasher) {
         username = user;
         passwordHasher = hasher;
-//        foodDiary = new FoodDiary();
+        diary = new Diary();
     }
 
     //
@@ -118,49 +117,6 @@ public class User implements Serializable {
             return (88.362 +(13.397* weight) + (4.799*height) - (85.677*age)) * activityLevel.coeff;
         }
     }
-//    public void setWeightDiary (WeightDiary newVar) {
-//        weightDiary = newVar;
-//    }
-//
-//    /**
-//     * Get the value of weightDiary
-//     * @return the value of weightDiary
-//     */
-//    public WeightDiary getWeightDiary () {
-//        return weightDiary;
-//    }
-//
-//    /**
-//     * Set the value of foodDiary
-//     * @param newVar the new value of foodDiary
-//     */
-//    public void setFoodDiary (FoodDiary newVar) {
-//        foodDiary = newVar;
-//    }
-//
-//    /**
-//     * Get the value of foodDiary
-//     * @return the value of foodDiary
-//     */
-//    public FoodDiary getFoodDiary () {
-//        return foodDiary;
-//    }
-//
-//    /**
-//     * Set the value of activityDiary
-//     * @param newVar the new value of activityDiary
-//     */
-//    public void setActivityDiary (ActivityDiary newVar) {
-//        activityDiary = newVar;
-//    }
-//
-//    /**
-//     * Get the value of activityDiary
-//     * @return the value of activityDiary
-//     */
-//    public ActivityDiary getActivityDiary () {
-//        return activityDiary;
-//    }
 
     /**
      * Set the value of height
@@ -176,6 +132,10 @@ public class User implements Serializable {
      */
     public double getHeight () {
         return height;
+    }
+
+    public Diary getDiary() {
+        return diary;
     }
 
 

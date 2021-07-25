@@ -1,5 +1,6 @@
 package com.example.fatcarbon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -24,6 +25,7 @@ public class MainActivityLoggedIn extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     FragmentManager manager = getSupportFragmentManager();
+    User user;
 
 
    
@@ -43,6 +45,8 @@ public class MainActivityLoggedIn extends AppCompatActivity {
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        Intent intent = getIntent();
+        user = (User) intent.getSerializableExtra("user");
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -74,14 +78,9 @@ public class MainActivityLoggedIn extends AppCompatActivity {
         EditText keyWord = findViewById(R.id.editTextFoodKeyword);
         FineliApi searchApi = new FineliApi(keyWord.getText().toString());
         ArrayList<FoodItem> listItems = (searchApi.parseFineliData());
-        for (FoodItem item:listItems){
-            System.out.println(item.getName() + "\n");
-            for (String[] unit:item.getUnits()){
-                System.out.println(unit[0] + "\tyksikkö: " + unit[1] + "g");
-            }
-        }
         Bundle args = new Bundle();
         args.putSerializable("list", listItems);
+        args.putSerializable("user", user);
         Fragment frag = new FoodSearchFragment();
         frag.setArguments(args);
         FragmentTransaction transaction = manager.beginTransaction();

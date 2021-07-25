@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             if (user.getPasswordHasher().validatePassword(passWord.getText().toString())){
                 Intent intent = new Intent(this, MainActivityLoggedIn.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.putExtra("currentUser", user);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         } else {
