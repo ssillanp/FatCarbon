@@ -39,5 +39,6 @@
     <string name="search_keyword">Add food items</string>
     <string name="search">Search</string>
     <string name="add">Add</string>
-    <string name="add_weighting">Weight now</string>
+    <string name="add_weighting">Add weight [kg]</string>
+    <string name="weight_now">Weight now</string>
 </resources>

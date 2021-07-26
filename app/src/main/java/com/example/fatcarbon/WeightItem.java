@@ -1,12 +1,12 @@
 package com.example.fatcarbon;
 
-import java.io.Serializable;
 
+import java.io.Serializable;
 
 /**
  * Class Weighting
  */
-public class Weight implements Serializable {
+public class WeightItem implements Serializable {
 
     //
     // Fields
@@ -19,9 +19,9 @@ public class Weight implements Serializable {
     // Constructors
     //
 
-    Weight() {}
+    public WeightItem() {}
 
-    Weight(double weight) {
+    public WeightItem(double weight) {
         weightValue = weight;
     }
     

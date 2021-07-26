@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             User user = new User(uname.getText().toString(), hasher);
             try {
                 user.setHeight(Double.parseDouble(height.getText().toString()));
-                user.setWeight(Double.parseDouble(weight.getText().toString()));
+                user.setStartWeight(Double.parseDouble(weight.getText().toString()));
                 user.setAge(Integer.parseInt(height.getText().toString()));
                 switch (Integer.parseInt(height.getText().toString())){
                     case 0: user.setActivityLevel(User.actLevel.INACTIVE);
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             udw.writeItem(user);
             Intent intent = new Intent(this, MainActivityLoggedIn.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.putExtra("currentUser", user);
+            intent.putExtra("user", user);
             startActivity(intent);
         } else {
             Snackbar.make(v, R.string.signup_error_snackbar_msg, Snackbar.LENGTH_LONG).show();

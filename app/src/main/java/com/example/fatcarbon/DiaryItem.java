@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-abstract public class DiaryItem implements Serializable {
+public class DiaryItem implements Serializable {
 
     private Date date;
     private Object item;
 
-    DiaryItem() {}
+    public DiaryItem() {}
 
-    DiaryItem(Object itm){
+    public DiaryItem(Object itm){
         date = Calendar.getInstance().getTime();
         item = itm;
 
