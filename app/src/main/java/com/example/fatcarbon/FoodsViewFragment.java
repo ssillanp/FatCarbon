@@ -36,16 +36,15 @@ public class FoodsViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_foods_view, container, false);
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState){
-        if (getArguments() != null) {
-            user = (User) getArguments().getSerializable("user");
-        }
+        user = User.getInstance();
         recyclerTodaysFood = getView().findViewById(R.id.recyclerTodaysFood);
         ArrayList<DiaryItem> listItems = user.getDiary().getFoodEntries();
-        TodaysFoodListAdapter adapter = new TodaysFoodListAdapter(getActivity(), listItems, user);
+        TodaysFoodListAdapter adapter = new TodaysFoodListAdapter(getActivity(), listItems);
         recyclerTodaysFood.setAdapter(adapter);
         recyclerTodaysFood.setLayoutManager(new LinearLayoutManager(getActivity()));
     }

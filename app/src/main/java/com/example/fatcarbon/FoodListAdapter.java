@@ -44,7 +44,6 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.MyView
             public void onClick(View v) {
                 Bundle args = new Bundle();
                 args.putSerializable("item",  itemsList.get(i));
-                args.putSerializable("user", user);
                 Fragment frag = new FoodUnitSelectorFragment();
                 frag.setArguments(args);
                 FragmentTransaction transaction = ((MainActivityLoggedIn) context).getSupportFragmentManager().

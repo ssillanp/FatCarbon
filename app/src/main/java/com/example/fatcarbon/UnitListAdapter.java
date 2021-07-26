@@ -23,10 +23,10 @@ public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyView
     Context context;
     User user;
 
-    public UnitListAdapter(FragmentActivity ct, FoodItem itm, User usr){
+    public UnitListAdapter(FragmentActivity ct, FoodItem itm){
         item = itm;
         context = ct;
-        user = usr;
+        user = User.getInstance();
     }
 
     @NonNull
@@ -55,10 +55,7 @@ public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyView
                 user.getDiary().addEntry(new FoodDiaryItem(item, foodPortion * foodPortionFactor));
                 UserDataWriter udw = new UserDataWriter(context);
                 udw.writeItem(user);
-                Bundle args = new Bundle();
-                args.putSerializable("user", user);
                 Fragment fv = new FoodsViewFragment();
-                fv.setArguments(args);
                 FragmentManager manager = ((MainActivityLoggedIn) context).getSupportFragmentManager();
                 FragmentTransaction tranact = manager.beginTransaction();
                 tranact.replace(R.id.foodsFragmentLayout, fv);

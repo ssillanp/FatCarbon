@@ -1,6 +1,5 @@
 package com.example.fatcarbon.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -23,8 +22,7 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 //
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        Intent intent = getActivity().getIntent();
-        User user = (User) intent.getSerializableExtra("user");
+        User user = User.getInstance();
         TextView test = root.findViewById(R.id.text_home);
         test.setText("Welcome " + user.getUsername());
         TextView date = root.findViewById(R.id.text_home_date);

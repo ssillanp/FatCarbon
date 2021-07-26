@@ -1,6 +1,5 @@
 package com.example.fatcarbon.ui.weights;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,13 +20,14 @@ import java.util.ArrayList;
 
 public class WeightsFragment extends Fragment {
 
+    User user;
+    View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_weights, container, false);
-        Intent intent = getActivity().getIntent();
-        User user = (User) intent.getSerializableExtra("user");
+        root = inflater.inflate(R.layout.fragment_weights, container, false);
+        user = User.getInstance();
         final TextView textView = root.findViewById(R.id.text_slideshow);
         Button weightButton = root.findViewById(R.id.buttonAddWeighting);
         EditText weightValue = root.findViewById(R.id.editTextWeightVal);
@@ -38,15 +38,15 @@ public class WeightsFragment extends Fragment {
                         Double.parseDouble(weightValue.getText().toString()))));
                 UserDataWriter udw = new UserDataWriter(getActivity());
                 udw.writeItem(user);
-                updateGraph(user, root);
+                updateGraph();
 
             }
         });
-        updateGraph(user, root);
+        updateGraph();
         return root;
     }
 
-    public void updateGraph(User user, View root) {
+    public void updateGraph() {
 
         GraphView weightGraph = root.findViewById(R.id.weight_graph);
         weightGraph.removeAllSeries();

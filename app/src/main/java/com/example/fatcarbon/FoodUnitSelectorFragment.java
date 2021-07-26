@@ -20,8 +20,8 @@ public class FoodUnitSelectorFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             item = (FoodItem) getArguments().getSerializable("item");
-            user = (User) getArguments().getSerializable("user");
         }
+        user = User.getInstance();
     }
 
     @Override
@@ -34,7 +34,7 @@ public class FoodUnitSelectorFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         recyclerViewUnits = getView().findViewById(R.id.recyclerFoodUnits);
         FoodItem item = (FoodItem) getArguments().getSerializable("item");
-        UnitListAdapter adapter = new UnitListAdapter(getActivity(), item, user);
+        UnitListAdapter adapter = new UnitListAdapter(getActivity(), item);
         recyclerViewUnits.setAdapter(adapter);
         recyclerViewUnits.setLayoutManager(new LinearLayoutManager(getActivity()));
     }

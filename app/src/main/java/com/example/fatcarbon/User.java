@@ -12,10 +12,11 @@ public class User implements Serializable {
     // Fields
     //
 
-    private final String username;
+    private static final User user = new User();
+    private String username;
     private PasswordHasher passwordHasher;
     private int age;
-    private Diary diary;
+    private final Diary diary;
     private double height;
     private double startWeight;
     private double daily_calorie_base;
@@ -42,67 +43,44 @@ public class User implements Serializable {
     //
     // Constructors
     //
-    User() {
-        username = "test";
+    private User() {
         diary = new Diary();
     }
 
-    User(String user, PasswordHasher hasher) {
-        username = user;
-        passwordHasher = hasher;
-        diary = new Diary();
+    public static User getInstance() {
+        return user;
     }
 
     //
     // Methods
     //
+    public void setUsername(String usernm){
+        username = usernm;
+    }
 
-    /**
-     * Get the value of username
-     *
-     * @return the value of username
-     */
     public String getUsername() {
         return username;
     }
 
-    /**
-     * Set the value of passwordHasher
-     *
-     * @param newVar the new value of passwordHasher
-     */
+
     public void setPasswordHasher(PasswordHasher newVar) {
         passwordHasher = newVar;
     }
 
-    /**
-     * Get the value of passwordHasher
-     *
-     * @return the value of passwordHasher
-     */
+
     public PasswordHasher getPasswordHasher() {
         return passwordHasher;
     }
 
-    /**
-     * Set the value of age
-     *
-     * @param newVar the new value of age
-     */
     public void setAge(int newVar) {
         age = newVar;
     }
 
-    /**
-     * Get the value of age
-     *
-     * @return the value of age
-     */
     public int getAge() {
         return age;
     }
 
-    public void setStartWeight(double startWeight) {
+    public void setWeight(double startWeight) {
         this.startWeight = startWeight;
         this.diary.addEntry(new DiaryItem(new WeightItem(this.startWeight)));
     }

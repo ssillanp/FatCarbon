@@ -38,14 +38,13 @@ public class MainActivity extends AppCompatActivity {
     public void login(View v) {
         EditText userName = findViewById(R.id.editTextUserName);
         EditText passWord = findViewById(R.id.editTextPasswd);
-        userName.setText("Sami");
-        passWord.setText("aaa");
+//        userName.setText("Sami");
+//        passWord.setText("aaa");
         User user = (User) new UserDataReader(context).readItem(userName.getText().toString());
         if (user != null) {
             if (user.getPasswordHasher().validatePassword(passWord.getText().toString())){
                 Intent intent = new Intent(this, MainActivityLoggedIn.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.putExtra("user", user);
                 startActivity(intent);
             }
         } else {
@@ -79,10 +78,12 @@ public class MainActivity extends AppCompatActivity {
 //        }
         if (dataOK){
             PasswordHasher hasher = new PasswordHasher(password.getText().toString());
-            User user = new User(uname.getText().toString(), hasher);
+            User user = User.getInstance();
+            user.setUsername(uname.getText().toString());
+            user.setPasswordHasher(hasher);
             try {
                 user.setHeight(Double.parseDouble(height.getText().toString()));
-                user.setStartWeight(Double.parseDouble(weight.getText().toString()));
+                user.setWeight(Double.parseDouble(weight.getText().toString()));
                 user.setAge(Integer.parseInt(height.getText().toString()));
                 switch (Integer.parseInt(height.getText().toString())){
                     case 0: user.setActivityLevel(User.actLevel.INACTIVE);
@@ -103,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
             udw.writeItem(user);
             Intent intent = new Intent(this, MainActivityLoggedIn.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.putExtra("user", user);
             startActivity(intent);
         } else {
             Snackbar.make(v, R.string.signup_error_snackbar_msg, Snackbar.LENGTH_LONG).show();

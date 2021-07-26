@@ -18,10 +18,10 @@ public class TodaysFoodListAdapter extends RecyclerView.Adapter<TodaysFoodListAd
     Context context;
     User user;
 
-    public TodaysFoodListAdapter(FragmentActivity ct, ArrayList<DiaryItem> items, User usr){
+    public TodaysFoodListAdapter(FragmentActivity ct, ArrayList<DiaryItem> items){
         itemsList = items;
         context = ct;
-        user = usr;
+        user = User.getInstance();
     }
 
     @NonNull
