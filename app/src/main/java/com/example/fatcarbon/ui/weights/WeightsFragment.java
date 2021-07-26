@@ -11,10 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.example.fatcarbon.DiaryItem;
-import com.example.fatcarbon.R;
-import com.example.fatcarbon.User;
-import com.example.fatcarbon.WeightItem;
+import com.example.fatcarbon.*;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
@@ -39,6 +36,8 @@ public class WeightsFragment extends Fragment {
             public void onClick(View v) {
                 user.getDiary().addEntry(new DiaryItem(new WeightItem(
                         Double.parseDouble(weightValue.getText().toString()))));
+                UserDataWriter udw = new UserDataWriter(getActivity());
+                udw.writeItem(user);
                 updateGraph(user, root);
 
             }

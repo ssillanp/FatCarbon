@@ -20,7 +20,7 @@ public class UserDataWriter {
     //
     // Constructors
     //
-    UserDataWriter(Context ctx) {
+    public UserDataWriter(Context ctx) {
         context = ctx;
     }
 
