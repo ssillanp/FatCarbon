@@ -49,6 +49,16 @@ public class Diary implements Serializable {
         return results;
     }
 
+    public ArrayList<DiaryItem> getFoodEntries () {
+        ArrayList<DiaryItem> results = new ArrayList<>();
+        for (DiaryItem item : entries){
+            if (item.getItem() instanceof FoodItem){
+                results.add(item);
+            }
+        }
+        return results;
+    }
+
     //
     // Other methods
     //

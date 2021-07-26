@@ -44,7 +44,7 @@ public class FoodsViewFragment extends Fragment {
             user = (User) getArguments().getSerializable("user");
         }
         recyclerTodaysFood = getView().findViewById(R.id.recyclerTodaysFood);
-        ArrayList<DiaryItem> listItems = user.getDiary().getEntries();
+        ArrayList<DiaryItem> listItems = user.getDiary().getFoodEntries();
         TodaysFoodListAdapter adapter = new TodaysFoodListAdapter(getActivity(), listItems, user);
         recyclerTodaysFood.setAdapter(adapter);
         recyclerTodaysFood.setLayoutManager(new LinearLayoutManager(getActivity()));

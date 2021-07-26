@@ -160,7 +160,6 @@ public class User implements Serializable {
     public User validateUser(String user, String password) {
         if (username.equals(user)) {
             if (passwordHasher.validatePassword(password)) {
-                System.out.println("User " + username + " validated!");
                 return this;
             }
         }
