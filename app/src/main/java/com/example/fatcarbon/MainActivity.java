@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         if (user != null) {
             if (user.getPasswordHasher().validatePassword(passWord.getText().toString())){
                 Intent intent = new Intent(this, MainActivityLoggedIn.class);
+                intent.putExtra("user", user);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
     public void submit(View v) {
         EditText uname = findViewById(R.id.editTextSetUserName);
         EditText password = findViewById(R.id.editTextSetPassword);
@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             UserDataWriter udw = new UserDataWriter(context);
             udw.writeItem(user);
             Intent intent = new Intent(this, MainActivityLoggedIn.class);
+            intent.putExtra("user", user);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         } else {

@@ -46,7 +46,7 @@ public class MainActivityLoggedIn extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         Intent intent = getIntent();
-        user = (User) intent.getSerializableExtra("user");
+        user = ((User) intent.getSerializableExtra("user"));
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(

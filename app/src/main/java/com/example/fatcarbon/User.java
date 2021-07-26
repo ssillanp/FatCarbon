@@ -51,6 +51,10 @@ public class User implements Serializable {
         return user;
     }
 
+    public Object readResolve() {
+        return getInstance();
+    }
+
     //
     // Methods
     //
