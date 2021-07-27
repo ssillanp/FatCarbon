@@ -1,0 +1,19 @@
+Nukkuminen	0,9
+Istuminen	1
+Kevyt työ istuen tai seisten, peseytyminen, kevyt siivoaminen, ruuan valmistus, päätetyö, autolla ajo	1,3-2
+Kevyt fyysinen aktiivisuus, siivoaminen, puutarhatyöt, rauhallinen kävely (4-5 km/h), taitolajien harjoittelu, ratsastus	2,5-3
+Siivoojan työ	3,5
+Kävely 6 km/h	4–5
+Raskas sairaanhoitotyö, lumityöt, halonhakkuu, kohtalainen fyysinen aktiivisuus, reipas kävely (6-7 km/h), kuntosaliharjoittelu, kevyt pallopeli, tanssi	4–6
+Rakennus, nostotyö	5–7
+Raskaat vaiheet rakennus- ja varastotyössä, reipas fyysinen aktiivisuus, aerobiset voimistelut, pallopelit, painiharjoittelu, juoksu 8 km/h	7–9
+Raskas metsätyö	yli 9
+Juoksu 10 km/h	10
+Soutuergometri, hyvin rasittava 200 w	12
+Pyöräily 27–30 km/h	12
+Hiihto, rasittava 14–18 km/h	14
+Juoksu 15 km/h	15
+Pyöräily yli 30 km/h	16
+Kilpailunomainen kestävyyssuoritus	yli 17
+
+kCal = MET x weight
