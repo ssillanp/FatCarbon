@@ -6,17 +6,116 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.ActivityFragment">
 
-    <TextView
-        android:id="@+id/text_slideshow"
+    <Spinner
+        android:id="@+id/spinnerActSelect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layoutActData"
+        android:layout_width="411dp"
+        android:layout_height="423dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextActivityEndTime">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/activity_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/buttonAddActivity"
+        android:layout_width="70dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/add"
+        app:layout_constraintBottom_toTopOf="@+id/layoutActData"
+        app:layout_constraintStart_toEndOf="@+id/editTextActivityEndTime"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerActSelect"
+        app:layout_constraintVertical_bias="0.375" />
+
+    <EditText
+        android:id="@+id/editTextActivityStartTime"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="00:00"
+        android:inputType="time"
+        android:textAlignment="center"
+        android:focusable="false"
+        app:layout_constraintStart_toStartOf="@+id/editTextActivityDate"
+        app:layout_constraintTop_toBottomOf="@+id/editTextActivityDate" />
+
+    <EditText
+        android:id="@+id/editTextActivityDate"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="dd.mm.yyyy"
+        android:inputType="date"
+        android:textAlignment="center"
+        android:focusable="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <EditText
+        android:id="@+id/editTextActivityEndTime"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:hint="23:00"
+        android:inputType="time"
+        android:textAlignment="center"
+        android:focusable="false"
+        app:layout_constraintStart_toEndOf="@+id/editTextActivityStartTime"
+        app:layout_constraintTop_toTopOf="@+id/editTextActivityStartTime" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/date"
+        app:layout_constraintEnd_toEndOf="@+id/editTextActivityDate"
+        app:layout_constraintStart_toStartOf="@+id/editTextActivityDate"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerActSelect" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_time"
+        app:layout_constraintBottom_toTopOf="@+id/editTextActivityStartTime"
+        app:layout_constraintEnd_toEndOf="@+id/editTextActivityStartTime"
+        app:layout_constraintStart_toStartOf="@+id/editTextActivityStartTime" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/end_time"
+        app:layout_constraintBottom_toTopOf="@+id/editTextActivityEndTime"
+        app:layout_constraintEnd_toEndOf="@+id/editTextActivityEndTime"
+        app:layout_constraintStart_toStartOf="@+id/editTextActivityEndTime" />
+
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.fatcarbon;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 /**
@@ -105,6 +106,12 @@ public class User implements Serializable {
     public void setStartWeight(double startWeight) {
         this.startWeight = startWeight;
         this.diary.addEntry(new DiaryItem(new WeightItem(this.startWeight)));
+    }
+
+    public double getCurrentWeight(){
+        ArrayList<DiaryItem> entries = this.getDiary().getWeightEntries();
+        return ((WeightItem) entries.get(entries.size() -1).getItem()).getWeightValue();
+
     }
 
 

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import com.example.fatcarbon.*;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
@@ -28,7 +27,6 @@ public class WeightsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_weights, container, false);
         Intent intent = getActivity().getIntent();
         User user = (User) intent.getSerializableExtra("user");
-        final TextView textView = root.findViewById(R.id.text_slideshow);
         Button weightButton = root.findViewById(R.id.buttonAddWeighting);
         EditText weightValue = root.findViewById(R.id.editTextWeightVal);
         weightButton.setOnClickListener(new View.OnClickListener() {

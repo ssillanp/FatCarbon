@@ -27,7 +27,6 @@
     <string name="nav_header_subtitle">info@aarnela.fi</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_weight_diary">Weight diary</string>
     <string name="menu_foods_diary">Food diary</string>
@@ -41,4 +40,29 @@
     <string name="add">Add</string>
     <string name="add_weighting">Add weight [kg]</string>
     <string name="weight_now">Weight now</string>
+    <string name="start">Start</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="end">End</string>
+    <string name="start_time">Start time</string>
+    <string name="end_time">End time</string>
+    <string-array name="mets">
+        <item>Select Activity</item>
+        <item>Light work</item>
+        <item>Relaxed walk</item>
+        <item>Walking 6 km/h</item>
+        <item>Fast walking >6km/h</item>
+        <item>Gym</item>
+        <item>Dancing</item>
+        <item>Heavy work</item>
+        <item>Heavy workout</item>
+        <item>Slow running 8 km/h</item>
+        <item>Extreme work</item>
+        <item>Running 10 km/h</item>
+        <item>Cycling 27–30 km/h</item>
+        <item>Skiing 14–18 km/h</item>
+        <item>Fast running 15 km/h</item>
+        <item>Fast cycling > 30 km/h</item>
+        <item>Long term endurance sports</item>
+    </string-array>
 </resources>

@@ -1,7 +1,6 @@
 package com.example.fatcarbon;
 
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
 
 
@@ -16,14 +15,18 @@ public class ActivityItem implements Serializable {
 
     private String sport;
     private Date date;
-    private Time duration;
-    private double calories;
-    
+    private Long duration;
+    private double met;
+
+
     //
     // Constructors
     //
-    ActivityItem() { };
-    
+    public ActivityItem() {
+    }
+
+    ;
+
     //
     // Methods
     //
@@ -35,70 +38,78 @@ public class ActivityItem implements Serializable {
 
     /**
      * Set the value of sport
+     *
      * @param newVar the new value of sport
      */
-    public void setSport (String newVar) {
+    public void setSport(String newVar, int pos) {
         sport = newVar;
+        met = calculateMetValue(pos);
     }
 
     /**
      * Get the value of sport
+     *
      * @return the value of sport
      */
-    public String getSport () {
+    public String getSport() {
         return sport;
     }
 
     /**
      * Set the value of date
+     *
      * @param newVar the new value of date
      */
-    public void setDate (Date newVar) {
+    public void setDate(Date newVar) {
         date = newVar;
     }
 
     /**
      * Get the value of date
+     *
      * @return the value of date
      */
-    public Date getDate () {
+    public Date getDate() {
         return date;
     }
 
     /**
      * Set the value of duration
+     *
      * @param newVar the new value of duration
      */
-    public void setDuration (Time newVar) {
+    public void setDuration(Long newVar) {
         duration = newVar;
     }
 
     /**
      * Get the value of duration
+     *
      * @return the value of duration
      */
-    public Time getDuration () {
+    public Long getDuration() {
         return duration;
     }
 
-    /**
-     * Set the value of calories
-     * @param newVar the new value of calories
-     */
-    public void setCalories (double newVar) {
-        calories = newVar;
-    }
 
     /**
      * Get the value of calories
+     *
      * @return the value of calories
      */
-    public double getCalories () {
-        return calories;
+    public double getCalories(double weight) {
+        return met * weight * duration / 3600000;
     }
+
+
 
     //
     // Other methods
     //
+    private int calculateMetValue(int pos) {
+        int[] mets = {2, 3, 5, 6, 6, 6, 7, 9, 9, 9, 10, 12, 14, 15, 16, 17};
+        return mets[pos];
+
+    }
 
 }

@@ -59,6 +59,16 @@ public class Diary implements Serializable {
         return results;
     }
 
+    public ArrayList<DiaryItem> getActivityEntries () {
+        ArrayList<DiaryItem> results = new ArrayList<>();
+        for (DiaryItem item : entries){
+            if (item.getItem() instanceof ActivityItem){
+                results.add(item);
+            }
+        }
+        return results;
+    }
+
     //
     // Other methods
     //
