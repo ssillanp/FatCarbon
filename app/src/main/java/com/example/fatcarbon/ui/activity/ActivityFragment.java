@@ -46,6 +46,7 @@ public class ActivityFragment extends Fragment {
         EditText setStartTime = root.findViewById(R.id.editTextActivityStartTime);
         EditText setEndTime = root.findViewById(R.id.editTextActivityEndTime);
         Button addActvity = root.findViewById(R.id.buttonAddActivity);
+        recyclerActivity = getView().findViewById(R.id.activity_recycler);
         setDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +62,7 @@ public class ActivityFragment extends Fragment {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                             setDate.setText(dayOfMonth + "." + (month + 1) + "." + year);
-                            acDate = new Date(year, month, dayOfMonth);
+                            acDate = new Date(year-1900, month, dayOfMonth);
                         }
                     }, mYear, mMonth, mDay);
                     datePickerDialog.show();
@@ -100,16 +101,24 @@ public class ActivityFragment extends Fragment {
             public void onClick(View v) {
                 if (acDate != null & stTime != null & enTime != null & activitySelector.getSelectedItemId() != 0) {
                     ActivityItem activityItem = new ActivityItem();
-                    activityItem.setDate(acDate);
                     activityItem.setDuration(enTime.getTime() - stTime.getTime());
                     activityItem.setSport(activitySelector.getSelectedItem().toString()
                             , ((int) activitySelector.getSelectedItemId()) - 1);
-                    user.getDiary().addEntry(new DiaryItem(activityItem));
+                    DiaryItem diaryItem = new DiaryItem();
+                    diaryItem.setDate(acDate);
+                    diaryItem.setItem(activityItem);
+                    user.getDiary().addEntry(diaryItem);
+                    UserDataWriter udw = new UserDataWriter(getActivity());
+                    udw.writeItem(user);
+                    updateActivityView();
 
                 }
             }
         });
-        recyclerActivity = getView().findViewById(R.id.activity_recycler);
+        updateActivityView();
+    }
+
+    public void updateActivityView(){
         ArrayList<DiaryItem> listItems = user.getDiary().getActivityEntries();
         ActivityAdapter adapter = new ActivityAdapter(getActivity(), listItems, user);
         recyclerActivity.setAdapter(adapter);

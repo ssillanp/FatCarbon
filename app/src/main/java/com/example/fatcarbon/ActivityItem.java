@@ -1,7 +1,6 @@
 package com.example.fatcarbon;
 
 import java.io.Serializable;
-import java.util.Date;
 
 
 /**
@@ -14,7 +13,6 @@ public class ActivityItem implements Serializable {
     //
 
     private String sport;
-    private Date date;
     private Long duration;
     private double met;
 
@@ -55,23 +53,23 @@ public class ActivityItem implements Serializable {
         return sport;
     }
 
-    /**
-     * Set the value of date
-     *
-     * @param newVar the new value of date
-     */
-    public void setDate(Date newVar) {
-        date = newVar;
-    }
-
-    /**
-     * Get the value of date
-     *
-     * @return the value of date
-     */
-    public Date getDate() {
-        return date;
-    }
+//    /**
+//     * Set the value of date
+//     *
+//     * @param newVar the new value of date
+//     */
+//    public void setDate(Date newVar) {
+//        date = newVar;
+//    }
+//
+//    /**
+//     * Get the value of date
+//     *
+//     * @return the value of date
+//     */
+//    public Date getDate() {
+//        return date;
+//    }
 
     /**
      * Set the value of duration
@@ -89,6 +87,11 @@ public class ActivityItem implements Serializable {
      */
     public Long getDuration() {
         return duration;
+    }
+
+    public String getDurationString(){
+        double durInh =  duration.doubleValue() / 3600000; //duration in h
+        return String.valueOf((int) durInh)+ "h " + (int)((durInh - (int) durInh) * 60) +"min" ;
     }
 
 

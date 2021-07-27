@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyViewHolder>{
@@ -34,9 +35,10 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         myViewHolder.text1.setText(((ActivityItem) itemsList.get(i).getItem()).getSport());
-        myViewHolder.text2.setText(String.valueOf((itemsList.get(i)).getDate()));
-        myViewHolder.text3.setText(String.valueOf(((ActivityItem) itemsList.get(i).getItem()).getDuration()) + " h");
+        myViewHolder.text2.setText(df.format(itemsList.get(i).getDate()));
+        myViewHolder.text3.setText(String.valueOf(((ActivityItem) itemsList.get(i).getItem()).getDurationString()));
         myViewHolder.text4.setText(String.valueOf(((ActivityItem) itemsList.get(i).getItem())
                 .getCalories(user.getCurrentWeight())) + " kCal");
 
