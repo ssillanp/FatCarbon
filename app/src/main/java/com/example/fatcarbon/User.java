@@ -13,7 +13,7 @@ public class User implements Serializable {
     // Fields
     //
 
-    private static final User user = new User();
+    private static User user;
     private String username;
     private PasswordHasher passwordHasher;
     private int age;
@@ -49,6 +49,9 @@ public class User implements Serializable {
     }
 
     public static User getInstance() {
+        if (user == null){
+            user = new User();
+        }
         return user;
     }
 
