@@ -53,7 +53,7 @@ public class User implements Serializable {
     }
 
     private Object readResolve()  throws ObjectStreamException {
-        return user;
+        return User.getInstance();
     }
 
     //
