@@ -36,7 +36,7 @@ public class UserDataReader {
         try {
             fis = context.openFileInput(username + ".dat");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            Object item = (Object) ois.readObject();
+            Object item =  ois.readObject();
             if (fis != null) {
                 fis.close();
             }

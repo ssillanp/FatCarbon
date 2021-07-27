@@ -1,5 +1,6 @@
 package com.example.fatcarbon;
 
+import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 
@@ -51,8 +52,8 @@ public class User implements Serializable {
         return user;
     }
 
-    public Object readResolve() {
-        return getInstance();
+    private Object readResolve()  throws ObjectStreamException {
+        return user;
     }
 
     //
