@@ -42,7 +42,7 @@ public class Diary implements Serializable {
     public ArrayList<DiaryItem> getWeightEntries () {
         ArrayList<DiaryItem> results = new ArrayList<>();
         for (DiaryItem item : entries){
-            if (item.getItem() instanceof WeightItem){
+            if (item instanceof WeightDiaryItem){
                 results.add(item);
             }
         }
@@ -52,7 +52,7 @@ public class Diary implements Serializable {
     public ArrayList<DiaryItem> getFoodEntries () {
         ArrayList<DiaryItem> results = new ArrayList<>();
         for (DiaryItem item : entries){
-            if (item.getItem() instanceof FoodItem){
+            if (item instanceof FoodDiaryItem){
                 results.add(item);
             }
         }
@@ -62,7 +62,7 @@ public class Diary implements Serializable {
     public ArrayList<DiaryItem> getActivityEntries () {
         ArrayList<DiaryItem> results = new ArrayList<>();
         for (DiaryItem item : entries){
-            if (item.getItem() instanceof ActivityItem){
+            if (item instanceof ActivityDiaryItem){
                 results.add(item);
             }
         }

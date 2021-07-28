@@ -105,12 +105,15 @@ public class User implements Serializable {
 
     public void setStartWeight(double startWeight) {
         this.startWeight = startWeight;
-        this.diary.addEntry(new DiaryItem(new WeightItem(this.startWeight)));
+        WeightDiaryItem wdi = new WeightDiaryItem();
+        wdi.setWeightValue(startWeight);
+        wdi.setDateNow();
+        this.diary.addEntry(wdi);
     }
 
     public double getCurrentWeight(){
         ArrayList<DiaryItem> entries = this.getDiary().getWeightEntries();
-        return ((WeightItem) entries.get(entries.size() -1).getItem()).getWeightValue();
+        return ((WeightDiaryItem) entries.get(entries.size() -1)).getWeightValue();
 
     }
 

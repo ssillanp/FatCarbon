@@ -14,7 +14,7 @@ import com.example.fatcarbon.*;
 import com.example.fatcarbon.app.DiaryItem;
 import com.example.fatcarbon.app.User;
 import com.example.fatcarbon.app.UserDataWriter;
-import com.example.fatcarbon.app.WeightItem;
+import com.example.fatcarbon.app.WeightDiaryItem;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
@@ -36,8 +36,10 @@ public class WeightsFragment extends Fragment {
         weightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.getDiary().addEntry(new DiaryItem(new WeightItem(
-                        Double.parseDouble(weightValue.getText().toString()))));
+                WeightDiaryItem wdi = new WeightDiaryItem();
+                wdi.setWeightValue(Double.parseDouble(weightValue.getText().toString()));
+                wdi.setDateNow();
+                user.getDiary().addEntry(wdi);
                 UserDataWriter udw = new UserDataWriter(getActivity());
                 udw.writeItem(user);
                 updateGraph(user, root);
@@ -57,7 +59,7 @@ public class WeightsFragment extends Fragment {
         DataPoint[] pointsArray = new DataPoint[weights.size()];
         for (int i = 0; i < weights.size(); i++) {
             pointsArray[i] = new DataPoint(weights.get(i).getDate(),
-                    ((WeightItem) weights.get(i).getItem()).getWeightValue());
+                    ((WeightDiaryItem) weights.get(i)).getWeightValue());
         }
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(pointsArray);
         series.setTitle("weights");
@@ -73,8 +75,8 @@ public class WeightsFragment extends Fragment {
 // set manual x bounds to have nice steps
         weightGraph.getViewport().setMinX(weights.get(0).getDate().getTime() - (86400000 / 2));
         weightGraph.getViewport().setMaxX(weights.get(weights.size() - 1).getDate().getTime() + (86400000 / 2));
-        weightGraph.getViewport().setMinY(((WeightItem) weights.get(0).getItem()).getWeightValue() * 0.4);
-        weightGraph.getViewport().setMaxY(((WeightItem) weights.get(0).getItem()).getWeightValue() * 1.6);
+        weightGraph.getViewport().setMinY(((WeightDiaryItem) weights.get(0)).getWeightValue() * 0.4);
+        weightGraph.getViewport().setMaxY(((WeightDiaryItem) weights.get(0)).getWeightValue() * 1.6);
         weightGraph.getViewport().setXAxisBoundsManual(true);
         weightGraph.getViewport().setYAxisBoundsManual(true);
 

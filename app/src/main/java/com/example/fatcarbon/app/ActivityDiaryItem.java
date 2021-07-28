@@ -1,12 +1,10 @@
 package com.example.fatcarbon.app;
 
-import java.io.Serializable;
-
 
 /**
  * Class ActivityItem
  */
-public class ActivityItem implements Serializable {
+public class ActivityDiaryItem extends DiaryItem{
 
     //
     // Fields
@@ -20,7 +18,7 @@ public class ActivityItem implements Serializable {
     //
     // Constructors
     //
-    public ActivityItem() {
+    public ActivityDiaryItem() {
     }
 
     ;

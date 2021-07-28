@@ -40,8 +40,8 @@ public class TodaysFoodListAdapter extends RecyclerView.Adapter<TodaysFoodListAd
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         myViewHolder.text1.setText(((FoodItem) itemsList.get(i).getItem()).getName());
-        myViewHolder.text2.setText(String.valueOf(((FoodDiaryItem) itemsList.get(i)).getPortion()) + " g");
-        double kCal = (((FoodItem) itemsList.get(i).getItem()).getEnergyKcal()) / 100 * (((FoodDiaryItem) itemsList.get(i)).getPortion());
+        myViewHolder.text2.setText(String.valueOf(((FoodDiaryItem) itemsList.get(i)).getAmount()) + " g");
+        double kCal = (((FoodItem) itemsList.get(i).getItem()).getEnergyKcal()) / 100 * (((FoodDiaryItem) itemsList.get(i)).getAmount());
         myViewHolder.text3.setText(String.valueOf((int) kCal) + " kCal");
 
     }

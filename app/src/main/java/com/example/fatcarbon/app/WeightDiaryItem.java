@@ -1,12 +1,10 @@
 package com.example.fatcarbon.app;
 
 
-import java.io.Serializable;
-
 /**
  * Class Weighting
  */
-public class WeightItem implements Serializable {
+public class WeightDiaryItem extends DiaryItem {
 
     //
     // Fields
@@ -14,17 +12,16 @@ public class WeightItem implements Serializable {
 
 
     private double weightValue;
-    
+
     //
     // Constructors
     //
 
-    public WeightItem() {}
-
-    public WeightItem(double weight) {
-        weightValue = weight;
+    public WeightDiaryItem() {
+        unit = "kg";
     }
-    
+
+
     //
     // Methods
     //
@@ -33,19 +30,22 @@ public class WeightItem implements Serializable {
     //
     // Accessor methods
     //
+
     /**
      * Set the value of weightValue
+     *
      * @param newVar the new value of weightValue
      */
-    public void setWeightValue (double newVar) {
+    public void setWeightValue(double newVar) {
         weightValue = newVar;
     }
 
     /**
      * Get the value of weightValue
+     *
      * @return the value of weightValue
      */
-    public double getWeightValue () {
+    public double getWeightValue() {
         return weightValue;
     }
 

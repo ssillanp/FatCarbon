@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.example.fatcarbon.app.ActivityItem;
+import com.example.fatcarbon.app.ActivityDiaryItem;
 import com.example.fatcarbon.app.DiaryItem;
 import com.example.fatcarbon.R;
 import com.example.fatcarbon.app.User;
@@ -40,10 +40,10 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-        myViewHolder.text1.setText(((ActivityItem) itemsList.get(i).getItem()).getSport());
+        myViewHolder.text1.setText(((ActivityDiaryItem) itemsList.get(i)).getSport());
         myViewHolder.text2.setText(df.format(itemsList.get(i).getDate()));
-        myViewHolder.text3.setText(String.valueOf(((ActivityItem) itemsList.get(i).getItem()).getDurationString()));
-        myViewHolder.text4.setText(String.valueOf(((ActivityItem) itemsList.get(i).getItem())
+        myViewHolder.text3.setText(String.valueOf(((ActivityDiaryItem) itemsList.get(i)).getDurationString()));
+        myViewHolder.text4.setText(String.valueOf(((ActivityDiaryItem) itemsList.get(i))
                 .getCalories(user.getCurrentWeight())) + " kCal");
 
     }

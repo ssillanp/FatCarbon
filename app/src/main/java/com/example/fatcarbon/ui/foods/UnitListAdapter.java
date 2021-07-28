@@ -58,7 +58,11 @@ public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyView
                 } else {
                     foodPortionFactor = 1;
                 }
-                user.getDiary().addEntry(new FoodDiaryItem(item, foodPortion * foodPortionFactor));
+                FoodDiaryItem fdi = new FoodDiaryItem();
+                fdi.setItem(item);
+                fdi.setDateNow();
+                fdi.setAmount(foodPortion);
+                user.getDiary().addEntry(fdi);
                 UserDataWriter udw = new UserDataWriter(context);
                 udw.writeItem(user);
                 Bundle args = new Bundle();

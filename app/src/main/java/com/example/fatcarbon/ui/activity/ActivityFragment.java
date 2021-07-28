@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.example.fatcarbon.*;
-import com.example.fatcarbon.app.ActivityItem;
+import com.example.fatcarbon.app.ActivityDiaryItem;
 import com.example.fatcarbon.app.DiaryItem;
 import com.example.fatcarbon.app.User;
 import com.example.fatcarbon.app.UserDataWriter;
@@ -104,14 +104,13 @@ public class ActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (acDate != null & stTime != null & enTime != null & activitySelector.getSelectedItemId() != 0) {
-                    ActivityItem activityItem = new ActivityItem();
-                    activityItem.setDuration(enTime.getTime() - stTime.getTime());
-                    activityItem.setSport(activitySelector.getSelectedItem().toString()
+
+                    ActivityDiaryItem adi = new ActivityDiaryItem();
+                    adi.setDuration(enTime.getTime() - stTime.getTime());
+                    adi.setSport(activitySelector.getSelectedItem().toString()
                             , ((int) activitySelector.getSelectedItemId()) - 1);
-                    DiaryItem diaryItem = new DiaryItem();
-                    diaryItem.setDate(acDate);
-                    diaryItem.setItem(activityItem);
-                    user.getDiary().addEntry(diaryItem);
+                    adi.setDate(acDate);
+                    user.getDiary().addEntry(adi);
                     UserDataWriter udw = new UserDataWriter(getActivity());
                     udw.writeItem(user);
                     updateActivityView();
