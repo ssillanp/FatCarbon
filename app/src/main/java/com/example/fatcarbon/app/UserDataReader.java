@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.app;
 
 
 import android.content.Context;
@@ -22,7 +22,7 @@ public class UserDataReader {
     //
     // Constructors
     //
-    UserDataReader(Context ctx) {
+    public UserDataReader(Context ctx) {
         context = ctx;
     };
     

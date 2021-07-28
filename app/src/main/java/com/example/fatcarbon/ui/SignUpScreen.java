@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,9 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import com.example.fatcarbon.R;
 
 
-public class SignUp extends Fragment {
+public class SignUpScreen extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,7 +23,7 @@ public class SignUp extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SignUp() {
+    public SignUpScreen() {
         // Required empty public constructor
     }
 

@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.ui.foods;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -16,6 +16,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.example.fatcarbon.*;
+import com.example.fatcarbon.app.FoodDiaryItem;
+import com.example.fatcarbon.app.FoodItem;
+import com.example.fatcarbon.app.User;
+import com.example.fatcarbon.app.UserDataWriter;
+import com.example.fatcarbon.ui.MainActivityLoggedIn;
 
 public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyViewHolder>{
 

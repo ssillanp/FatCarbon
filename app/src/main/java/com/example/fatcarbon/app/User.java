@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.app;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class User implements Serializable {
         diary = new Diary();
     }
 
-    User(String user, PasswordHasher hasher) {
+    public User(String user, PasswordHasher hasher) {
         username = user;
         passwordHasher = hasher;
         diary = new Diary();

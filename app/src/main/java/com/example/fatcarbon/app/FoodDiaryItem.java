@@ -1,10 +1,10 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.app;
 
 public class FoodDiaryItem extends DiaryItem {
 
     private double portion;
 
-    FoodDiaryItem(FoodItem item, double port){
+    public FoodDiaryItem(FoodItem item, double port){
         super(item);
         portion = port;
 

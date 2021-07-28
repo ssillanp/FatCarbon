@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.app;
 
 import java.io.Serializable;
 import java.security.MessageDigest;
@@ -10,7 +10,7 @@ public class PasswordHasher implements Serializable {
     private final String hashedPassword;
     private final byte[] salt;
 
-    PasswordHasher(String password) {
+    public PasswordHasher(String password) {
             salt = getSalt();
             hashedPassword = getHashedPassword(password, salt);
             System.out.println(hashedPassword);

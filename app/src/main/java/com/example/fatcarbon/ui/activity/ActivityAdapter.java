@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.ui.activity;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,6 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.example.fatcarbon.app.ActivityItem;
+import com.example.fatcarbon.app.DiaryItem;
+import com.example.fatcarbon.R;
+import com.example.fatcarbon.app.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

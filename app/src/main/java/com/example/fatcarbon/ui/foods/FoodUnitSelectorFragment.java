@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.ui.foods;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.fatcarbon.app.FoodItem;
+import com.example.fatcarbon.R;
+import com.example.fatcarbon.app.User;
 
 
 public class FoodUnitSelectorFragment extends Fragment {

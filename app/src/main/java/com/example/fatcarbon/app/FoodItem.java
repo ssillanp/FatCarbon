@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.app;
 
 
 import java.io.Serializable;

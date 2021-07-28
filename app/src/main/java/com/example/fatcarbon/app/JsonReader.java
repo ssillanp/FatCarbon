@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.app;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;

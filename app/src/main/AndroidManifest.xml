@@ -13,10 +13,10 @@
         android:theme="@style/Theme.FatCarbon"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainActivityLoggedIn"
+            android:name=".ui.MainActivityLoggedIn"
             android:label="@string/title_activity_main_logged_in"
             android:theme="@style/Theme.FatCarbon.NoActionBar"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

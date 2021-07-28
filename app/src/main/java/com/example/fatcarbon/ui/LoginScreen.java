@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import com.example.fatcarbon.R;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.

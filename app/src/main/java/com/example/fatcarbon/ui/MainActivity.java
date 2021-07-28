@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
+import com.example.fatcarbon.*;
+import com.example.fatcarbon.app.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toSubmit(View v) {
-        Fragment frag = new SignUp();
+        Fragment frag = new SignUpScreen();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.main_ragment_window, frag);
         transaction.commit();

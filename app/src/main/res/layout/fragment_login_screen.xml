@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#C4F8FF"
     android:theme="@style/ThemeOverlay.FatCarbon.FullscreenContainer"
-    tools:context=".LoginScreen">
+    tools:context=".ui.LoginScreen">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,

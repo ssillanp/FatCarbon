@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.ui.foods;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,6 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.example.fatcarbon.*;
+import com.example.fatcarbon.app.DiaryItem;
+import com.example.fatcarbon.app.FoodDiaryItem;
+import com.example.fatcarbon.app.FoodItem;
+import com.example.fatcarbon.app.User;
 
 import java.util.ArrayList;
 

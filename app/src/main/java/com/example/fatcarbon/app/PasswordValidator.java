@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.app;
 
 /**
  * Class PasswordValidator
@@ -14,7 +14,7 @@ public class PasswordValidator {
     //
     // Constructors
     //
-    PasswordValidator() {
+    public PasswordValidator() {
 
     }
 

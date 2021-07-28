@@ -8,9 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.fatcarbon.FoodsViewFragment;
 import com.example.fatcarbon.R;
-import com.example.fatcarbon.User;
+import com.example.fatcarbon.app.User;
 
 public class FoodsFragment extends Fragment {
 

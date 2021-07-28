@@ -1,4 +1,4 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +18,11 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import com.example.fatcarbon.app.FineliApi;
+import com.example.fatcarbon.app.FoodItem;
+import com.example.fatcarbon.R;
+import com.example.fatcarbon.app.User;
+import com.example.fatcarbon.ui.foods.FoodSearchFragment;
 
 import java.util.ArrayList;
 

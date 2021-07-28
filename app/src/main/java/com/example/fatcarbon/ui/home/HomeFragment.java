@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.fatcarbon.R;
-import com.example.fatcarbon.User;
+import com.example.fatcarbon.app.User;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

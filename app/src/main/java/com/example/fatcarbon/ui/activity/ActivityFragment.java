@@ -12,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.example.fatcarbon.*;
+import com.example.fatcarbon.app.ActivityItem;
+import com.example.fatcarbon.app.DiaryItem;
+import com.example.fatcarbon.app.User;
+import com.example.fatcarbon.app.UserDataWriter;
 
 import java.sql.Time;
 import java.util.ArrayList;

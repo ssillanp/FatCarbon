@@ -1,7 +1,6 @@
-package com.example.fatcarbon;
+package com.example.fatcarbon.app;
 
 
-import android.util.Pair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
