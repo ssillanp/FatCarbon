@@ -100,8 +100,17 @@ public class Diary implements Serializable {
     public double getDailyCalIntake(Date day) {
         double dci = 0;
         for (DiaryItem item:this.getFoodEntries(day)){
-            dci += item.getAmount() * (FoodItem) item.getItem().get
+            dci += item.getAmount() * ((FoodItem) item.getItem()).getEnergyKcal();
         }
+        return dci;
+    }
+
+    public double getDailyEnergyBurnt(Date day) {
+        double deb = 0;
+        for (DiaryItem item:this.getActivityEntries(day)){
+            deb += item.getAmount();
+        }
+        return deb;
     }
 
 

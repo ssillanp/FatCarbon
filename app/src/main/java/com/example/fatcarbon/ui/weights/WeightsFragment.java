@@ -74,8 +74,8 @@ public class WeightsFragment extends Fragment {
         series.setDataPointsRadius(10);
         series.setThickness(8);
         seriesTarget.setColor(Color.RED);
-        series.setDrawDataPoints(false);
-        series.setThickness(8);
+        seriesTarget.setDrawDataPoints(false);
+        seriesTarget.setThickness(8);
         weightGraph.addSeries(series);
         weightGraph.addSeries(seriesTarget);
 

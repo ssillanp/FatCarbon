@@ -85,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 user.setHeight(Double.parseDouble(height.getText().toString()));
                 user.setStartWeight(Double.parseDouble(weight.getText().toString()));
-                user.setAge(Integer.parseInt(height.getText().toString()));
-                switch (Integer.parseInt(height.getText().toString())){
+                user.setAge(Integer.parseInt(age.getText().toString()));
+                switch (act_level.getProgress()){
                     case 0: user.setActivityLevel(User.actLevel.INACTIVE);
                     case 1: user.setActivityLevel(User.actLevel.OCCASIONAL);
                     case 2: user.setActivityLevel(User.actLevel.REGULAR);

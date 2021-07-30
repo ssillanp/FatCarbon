@@ -130,7 +130,7 @@ public class User implements Serializable {
         if (sex == sexes.FEMALE) {
             return (447.593 + (9.247 * startWeight) + (3.098 * height) - (4.330 * age)) * activityLevel.coeff;
         } else {
-            return (88.362 + (13.397 * startWeight) + (4.799 * height) - (85.677 * age)) * activityLevel.coeff;
+            return (88.362 + (13.397 * startWeight) + (4.799 * height) - (5.677 * age)) * activityLevel.coeff;
         }
     }
 

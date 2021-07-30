@@ -61,9 +61,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:seriesColor="#00cc00"
-                app:seriesData="0=0"
-                app:seriesTitle="Foobar"
-                app:seriesType="bar" />
+                app:seriesData="0=0"/>
 
         </android.support.constraint.ConstraintLayout>
 
@@ -88,9 +86,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:seriesColor="#00cc00"
-                app:seriesData="0=0"
-                app:seriesTitle="Foobar"
-                app:seriesType="bar" />
+                app:seriesData="0=0" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -103,6 +99,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
+            app:seriesTitle="Foobar"
             <com.jjoe64.graphview.helper.GraphViewXML
                 android:id="@+id/home_activity_graph"
                 android:layout_width="match_parent"
@@ -113,9 +110,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:seriesColor="#00cc00"
-                app:seriesData="0=0"
-                app:seriesTitle="Foobar"
-                app:seriesType="bar" />
+                app:seriesData="0=0" />
 
         </android.support.constraint.ConstraintLayout>
 
