@@ -22,7 +22,12 @@ public abstract class DiaryItem implements Serializable {
     }
 
     public void setDateNow(){
-        date = Calendar.getInstance().getTime();
+        Date day = Calendar.getInstance().getTime();
+        day.setHours(0);
+        day.setMinutes(0);
+        day.setSeconds(0);
+        date = day;
+        System.out.println(date);
     }
 
     public Object getItem() {

@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import com.example.fatcarbon.*;
+import com.example.fatcarbon.R;
 import com.example.fatcarbon.app.DiaryItem;
 import com.example.fatcarbon.app.User;
 import com.example.fatcarbon.app.UserDataWriter;

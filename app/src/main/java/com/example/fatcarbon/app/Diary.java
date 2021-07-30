@@ -2,6 +2,7 @@ package com.example.fatcarbon.app;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Class Diary
@@ -13,14 +14,16 @@ public class Diary implements Serializable {
     //
 
     protected ArrayList<DiaryItem> entries;
-    
+
     //
     // Constructors
     //
-    Diary () {
+    Diary() {
         entries = new ArrayList();
-    };
-    
+    }
+
+    ;
+
     //
     // Methods
     //
@@ -33,51 +36,83 @@ public class Diary implements Serializable {
 
     /**
      * Get the value of Entries
+     *
      * @return the value of Entries
      */
-    public ArrayList<DiaryItem> getEntries () {
+    public ArrayList<DiaryItem> getEntries() {
         return entries;
     }
 
-    public ArrayList<DiaryItem> getWeightEntries () {
+    public ArrayList<DiaryItem> getWeightEntries() {
         ArrayList<DiaryItem> results = new ArrayList<>();
-        for (DiaryItem item : entries){
-            if (item instanceof WeightDiaryItem){
+        for (DiaryItem item : this.entries) {
+            if (item instanceof WeightDiaryItem) {
                 results.add(item);
             }
         }
         return results;
     }
 
-    public ArrayList<DiaryItem> getFoodEntries () {
+    public ArrayList<DiaryItem> getFoodEntries() {
         ArrayList<DiaryItem> results = new ArrayList<>();
-        for (DiaryItem item : entries){
-            if (item instanceof FoodDiaryItem){
+        for (DiaryItem item : this.entries) {
+            if (item instanceof FoodDiaryItem) {
                 results.add(item);
             }
         }
         return results;
     }
 
-    public ArrayList<DiaryItem> getActivityEntries () {
+    public ArrayList<DiaryItem> getFoodEntries(Date day) {
         ArrayList<DiaryItem> results = new ArrayList<>();
-        for (DiaryItem item : entries){
-            if (item instanceof ActivityDiaryItem){
+        for (DiaryItem item : this.entries) {
+            if (item instanceof FoodDiaryItem) {
+                if (item.getDate().compareTo(day) == 0){
+                    results.add(item);
+                }
+            }
+        }
+        return results;
+    }
+
+    public ArrayList<DiaryItem> getActivityEntries() {
+        ArrayList<DiaryItem> results = new ArrayList<>();
+        for (DiaryItem item : this.entries) {
+            if (item instanceof ActivityDiaryItem) {
                 results.add(item);
             }
         }
         return results;
     }
+
+    public ArrayList<DiaryItem> getActivityEntries(Date day) {
+        ArrayList<DiaryItem> results = new ArrayList<>();
+        for (DiaryItem item : this.entries) {
+            if (item instanceof ActivityDiaryItem) {
+                if (item.getDate().compareTo(day) == 0){
+                    results.add(item);
+                }
+            }
+        }
+        return results;
+    }
+
+    public double getDailyCalIntake(Date day) {
+        double dci = 0;
+        for (DiaryItem item:this.getFoodEntries(day)){
+            dci += item.getAmount() * (FoodItem) item.getItem().get
+        }
+    }
+
 
     //
     // Other methods
     //
 
     /**
-     * @param        entry
+     * @param entry
      */
-    public void addEntry(DiaryItem entry)
-    {
+    public void addEntry(DiaryItem entry) {
         entries.add(entry);
     }
 

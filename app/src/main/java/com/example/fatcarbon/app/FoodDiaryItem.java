@@ -4,9 +4,9 @@ public class FoodDiaryItem extends DiaryItem {
 
 
 
-    public FoodDiaryItem(){
-        unit = "g";
-    }
+//    public FoodDiaryItem(){
+//        unit = "g";
+//    }
 
 
 }

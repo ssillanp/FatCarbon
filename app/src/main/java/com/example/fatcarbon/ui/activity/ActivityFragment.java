@@ -11,13 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import com.example.fatcarbon.*;
+import com.example.fatcarbon.R;
 import com.example.fatcarbon.app.ActivityDiaryItem;
 import com.example.fatcarbon.app.DiaryItem;
 import com.example.fatcarbon.app.User;
 import com.example.fatcarbon.app.UserDataWriter;
 
 import java.sql.Time;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -84,11 +85,12 @@ public class ActivityFragment extends Fragment {
                         , new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        DecimalFormat df = new DecimalFormat("00");
                         if (v == setStartTime) {
-                            setStartTime.setText(hourOfDay + ":" + minute);
+                            setStartTime.setText(df.format(hourOfDay) + ":" + df.format(minute));
                             stTime = new Time(hourOfDay, minute, 0);
                         } else if (v == setEndTime) {
-                            setEndTime.setText(hourOfDay + ":" + minute);
+                            setEndTime.setText(df.format(hourOfDay) + ":" + df.format(minute));
                             enTime = new Time(hourOfDay, minute, 0);
                         }
                     }

@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.fatcarbon.R;
 import com.example.fatcarbon.app.User;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,14 +34,19 @@ public class HomeFragment extends Fragment {
         Date now = Calendar.getInstance().getTime();
         SimpleDateFormat format = new SimpleDateFormat("dd.M.yyyy");
         date.setText(format.format(now));
-//        ProgressBar weightBar = root.findViewById(R.id.progressBarWeight);
-//        ProgressBar foodBar = root.findViewById(R.id.progressBarFood);
-//        ProgressBar activityBar = root.findViewById(R.id.progressBarActivity);
-//        weightBar.setProgress(10);
-//        foodBar.setProgress(50);
-//        activityBar.setProgress(100);
-
-
+        GraphView weightGraph = root.findViewById(R.id.home_weight_graph);
+        GraphView foodGraph = root.findViewById(R.id.home_food_graph);
+        GraphView activityGraph = root.findViewById(R.id.home_activity_graph);
+        BarGraphSeries<DataPoint> series = new BarGraphSeries<DataPoint>(new DataPoint[]{
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 2),
+                new DataPoint(4, 6)
+        });
+        weightGraph.addSeries(series);
+        foodGraph.addSeries(series);
+        activityGraph.addSeries(series);
 
 
 
