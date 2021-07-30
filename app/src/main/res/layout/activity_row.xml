@@ -16,13 +16,13 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textActivityItem"
-                android:layout_width="296dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="4dp"
+                android:layout_width="274dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="32dp"
                 android:text="ItemDesc"
                 android:textSize="18sp"
                 android:textStyle="normal"
@@ -36,19 +36,19 @@
                 android:text="0"
                 android:textAlignment="center"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/textViewActivityCal"
+                app:layout_constraintEnd_toEndOf="@+id/textViewActivityCal"
                 app:layout_constraintTop_toBottomOf="@+id/textViewActivityCal" />
 
             <TextView
                 android:id="@+id/textViewActivityCal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
                 android:text="0"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textActivityItem"
-                app:layout_constraintTop_toTopOf="@+id/textActivityItem" />
+                tools:layout_editor_absoluteY="13dp" />
 
             <TextView
                 android:id="@+id/textViewActivityDate"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:text="Date"
                 app:layout_constraintStart_toStartOf="@+id/textActivityItem"
-                app:layout_constraintTop_toTopOf="parent" />
+                tools:layout_editor_absoluteY="5dp" />
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>

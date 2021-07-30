@@ -1,5 +1,6 @@
 package com.example.fatcarbon.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -9,11 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.example.fatcarbon.R;
 import com.example.fatcarbon.app.ActivityDiaryItem;
 import com.example.fatcarbon.app.DiaryItem;
-import com.example.fatcarbon.R;
 import com.example.fatcarbon.app.User;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -37,14 +39,16 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
         return new MyViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        DecimalFormat df = new DecimalFormat("#0");
         myViewHolder.text1.setText(((ActivityDiaryItem) itemsList.get(i)).getSport());
-        myViewHolder.text2.setText(df.format(itemsList.get(i).getDate()));
+        myViewHolder.text2.setText(sdf.format(itemsList.get(i).getDate()));
         myViewHolder.text3.setText(String.valueOf(((ActivityDiaryItem) itemsList.get(i)).getDurationString()));
-        myViewHolder.text4.setText(String.valueOf(((ActivityDiaryItem) itemsList.get(i))
-                .getCalories(user.getCurrentWeight())) + " kCal");
+        myViewHolder.text4.setText(String.valueOf(df.format(((ActivityDiaryItem) itemsList.get(i))
+                .getCalories(user.getCurrentWeight()))) + " kCal");
 
     }
 
