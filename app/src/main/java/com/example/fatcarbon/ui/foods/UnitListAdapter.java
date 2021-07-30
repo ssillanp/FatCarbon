@@ -23,13 +23,13 @@ import com.example.fatcarbon.app.User;
 import com.example.fatcarbon.app.UserDataWriter;
 import com.example.fatcarbon.ui.MainActivityLoggedIn;
 
-public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyViewHolder>{
+public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyViewHolder> {
 
     FoodItem item;
     Context context;
     User user;
 
-    public UnitListAdapter(FragmentActivity ct, FoodItem itm, User usr){
+    public UnitListAdapter(FragmentActivity ct, FoodItem itm, User usr) {
         item = itm;
         context = ct;
         user = usr;
@@ -53,7 +53,7 @@ public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyView
             public void onClick(View v) {
                 Double foodPortion = Double.parseDouble(item.getUnits().get(myViewHolder.getAdapterPosition())[1]);
                 int foodPortionFactor;
-                if (!myViewHolder.textPortions.getText().toString().equals("")){
+                if (!myViewHolder.textPortions.getText().toString().equals("")) {
                     foodPortionFactor = Integer.parseInt(myViewHolder.textPortions.getText().toString());
                 } else {
                     foodPortionFactor = 1;
@@ -61,7 +61,7 @@ public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyView
                 FoodDiaryItem fdi = new FoodDiaryItem();
                 fdi.setItem(item);
                 fdi.setDateNow();
-                fdi.setAmount(foodPortion);
+                fdi.setAmount(foodPortion * foodPortionFactor);
                 user.getDiary().addEntry(fdi);
                 UserDataWriter udw = new UserDataWriter(context);
                 udw.writeItem(user);
@@ -95,6 +95,7 @@ public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyView
         EditText textPortions;
         Button addBtn;
         ConstraintLayout mainLayout;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             text1 = itemView.findViewById(R.id.textFoodUnitItem);

@@ -111,6 +111,10 @@ public class User implements Serializable {
         this.diary.addEntry(wdi);
     }
 
+    public double getStartWeight(){
+        return this.startWeight;
+    }
+
     public double getCurrentWeight(){
         ArrayList<DiaryItem> entries = this.getDiary().getWeightEntries();
         return ((WeightDiaryItem) entries.get(entries.size() -1)).getWeightValue();

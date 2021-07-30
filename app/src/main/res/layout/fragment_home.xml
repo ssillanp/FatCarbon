@@ -37,82 +37,102 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="519dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_home">
 
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-            <com.jjoe64.graphview.helper.GraphViewXML
-                android:id="@+id/home_weight_graph"
-                android:layout_width="match_parent"
-                android:layout_height="150dip"
-                android:background="#FFFFFF"
-                android:title="Weights"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:seriesColor="#00cc00"
-                app:seriesData="0=0"/>
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
             android:layout_marginTop="28dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_min="170dp"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:text="@string/calories_eaten_today"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <com.jjoe64.graphview.helper.GraphViewXML
-                android:id="@+id/home_food_graph"
-                android:layout_width="match_parent"
-                android:layout_height="150dip"
-                android:background="#FFFFFF"
-                android:title="Calorie intake"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:seriesColor="#00cc00"
-                app:seriesData="0=0" />
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textViewCalEatenKcal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="170dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+            android:layout_marginTop="32dp"
+            android:text="TextView"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
-            app:seriesTitle="Foobar"
-            <com.jjoe64.graphview.helper.GraphViewXML
-                android:id="@+id/home_activity_graph"
-                android:layout_width="match_parent"
-                android:layout_height="150dip"
-                android:background="#FFFFFF"
-                android:title="Calories burnt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:seriesColor="#00cc00"
-                app:seriesData="0=0" />
+        <TextView
+            android:id="@+id/textViewCalEatenPrcent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:text="TextView"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/textViewCalEatenKcal"
+            app:layout_constraintTop_toTopOf="@+id/textViewCalEatenKcal" />
 
-        </android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@string/calories_burnt_today"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCalEatenKcal" />
+
+        <TextView
+            android:id="@+id/textViewCalBurntKcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="TextView"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="@+id/textView23"
+            app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/weight_today"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCalBurntKcal" />
+
+        <TextView
+            android:id="@+id/textViewCurrentWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="TextView"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="@+id/textView24"
+            app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+        <TextView
+            android:id="@+id/textViewWeightToTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:text="TextView"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/textViewCurrentWeight"
+            app:layout_constraintTop_toTopOf="@+id/textViewCurrentWeight" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weight_toGo"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewWeightToTarget"
+            app:layout_constraintTop_toTopOf="@+id/textView24" />
 
     </android.support.constraint.ConstraintLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -67,7 +67,7 @@ public class Diary implements Serializable {
         ArrayList<DiaryItem> results = new ArrayList<>();
         for (DiaryItem item : this.entries) {
             if (item instanceof FoodDiaryItem) {
-                if (item.getDate().compareTo(day) == 0){
+                if (item.getDate().toString().equals(day.toString())){ //TODO fix dates
                     results.add(item);
                 }
             }
@@ -89,7 +89,7 @@ public class Diary implements Serializable {
         ArrayList<DiaryItem> results = new ArrayList<>();
         for (DiaryItem item : this.entries) {
             if (item instanceof ActivityDiaryItem) {
-                if (item.getDate().compareTo(day) == 0){
+                if (item.getDate().toString().equals(day.toString())){
                     results.add(item);
                 }
             }
@@ -97,18 +97,26 @@ public class Diary implements Serializable {
         return results;
     }
 
-    public double getDailyCalIntake(Date day) {
+    public double getDailyCalIntake() {
         double dci = 0;
+        Date day = new Date();
+        day.setHours(0);
+        day.setMinutes(0);
+        day.setSeconds(0);
         for (DiaryItem item:this.getFoodEntries(day)){
-            dci += item.getAmount() * ((FoodItem) item.getItem()).getEnergyKcal();
+            dci += item.getAmount() / 100 * ((FoodItem) item.getItem()).getEnergyKcal();
         }
         return dci;
     }
 
-    public double getDailyEnergyBurnt(Date day) {
+    public double getDailyEnergyBurnt(double weight) {
         double deb = 0;
+        Date day = new Date();
+        day.setHours(0);
+        day.setMinutes(0);
+        day.setSeconds(0);
         for (DiaryItem item:this.getActivityEntries(day)){
-            deb += item.getAmount();
+            deb += ((ActivityDiaryItem) item).getCalories(weight);
         }
         return deb;
     }
