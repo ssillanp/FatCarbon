@@ -1,5 +1,11 @@
 package com.example.fatcarbon.app;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
 
 import android.content.Context;
 
@@ -8,27 +14,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 /**
- * Class DataReader
+ * Class DataReader for reading an User object from storage
  */
 public class UserDataReader {
 
     private Context context;
 
-    //
-    // Fields
-    //
-
-    
-    //
-    // Constructors
-    //
     public UserDataReader(Context ctx) {
         context = ctx;
     };
-    
-    //
-    // Methods
-    //
 
     public Object readItem(String username) {
 
@@ -47,13 +41,5 @@ public class UserDataReader {
         return null;
     }
 
-
-    //
-    // Accessor methods
-    //
-
-    //
-    // Other methods
-    //
 
 }
