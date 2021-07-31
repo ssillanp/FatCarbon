@@ -84,7 +84,7 @@ public class WeightsFragment extends Fragment {
         for (int i = 0; i < weights.size(); i++) {
             pointsArray[i] = new DataPoint(weights.get(i).getDate(),
                     ((WeightDiaryItem) weights.get(i)).getWeightValue());
-            targetArray[i] = new DataPoint(weights.get(0).getDate(),
+            targetArray[i] = new DataPoint(weights.get(i).getDate(),
                     user.getTargetWeight());
         }
         // create data series for the graph
