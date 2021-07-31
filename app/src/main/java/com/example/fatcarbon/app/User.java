@@ -49,6 +49,7 @@ public class User implements Serializable {
 
     //    default constructor
     User() {
+        username = "";
         diary = new Diary();
     }
 
