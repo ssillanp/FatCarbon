@@ -1,5 +1,12 @@
 package com.example.fatcarbon.ui.activity;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -18,6 +25,10 @@ import com.example.fatcarbon.app.User;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
+/**
+ * RecyclerView adapter for activity recycler
+ */
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyViewHolder>{
 
@@ -44,6 +55,8 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         DecimalFormat df = new DecimalFormat("#0");
+
+        // set activity row item texts
         myViewHolder.text1.setText(((ActivityDiaryItem) itemsList.get(i)).getSport());
         myViewHolder.text2.setText(sdf.format(itemsList.get(i).getDate()));
         myViewHolder.text3.setText(String.valueOf(((ActivityDiaryItem) itemsList.get(i)).getDurationString()));
