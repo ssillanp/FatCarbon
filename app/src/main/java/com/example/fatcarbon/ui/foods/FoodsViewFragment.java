@@ -1,6 +1,5 @@
 package com.example.fatcarbon.ui.foods;
 
-
 /**************************************
  LUT Olio-ohjelmointi Harjoitustyö
  @author Sami Sillanpää
