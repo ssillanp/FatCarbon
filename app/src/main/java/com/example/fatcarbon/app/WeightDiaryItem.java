@@ -1,56 +1,29 @@
 package com.example.fatcarbon.app;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
 
 /**
- * Class Weighting
+ * Class for weightings
  */
 public class WeightDiaryItem extends DiaryItem {
 
-    //
-    // Fields
-    //
-
-
     private double weightValue;
-
-    //
-    // Constructors
-    //
 
     public WeightDiaryItem() {
         unit = "kg";
     }
 
-
-    //
-    // Methods
-    //
-
-
-    //
-    // Accessor methods
-    //
-
-    /**
-     * Set the value of weightValue
-     *
-     * @param newVar the new value of weightValue
-     */
     public void setWeightValue(double newVar) {
         weightValue = newVar;
     }
 
-    /**
-     * Get the value of weightValue
-     *
-     * @return the value of weightValue
-     */
     public double getWeightValue() {
         return weightValue;
     }
-
-    //
-    // Other methods
-    //
 
 }
