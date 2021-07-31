@@ -1,17 +1,22 @@
 package com.example.fatcarbon.app;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Class FoodItem
+ * Class FoodItem, represents a Fineli API returned FoodItem
  */
 public class FoodItem implements Serializable {
 
-    //
-    // Fields
-    //
+
     private int id;
     private String type;
     private String name;
@@ -30,20 +35,9 @@ public class FoodItem implements Serializable {
     private double sugar;
     private double salt;
 
-
-    
-    //
-    // Constructors
-    //
-
     public FoodItem() {
         units = new ArrayList<>();
     }
-
-    FoodItem (int ID) {
-        id=ID;
-        units = new ArrayList<>();
-    };
 
     public int getId() {
         return id;
