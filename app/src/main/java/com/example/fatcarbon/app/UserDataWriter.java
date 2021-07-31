@@ -1,44 +1,27 @@
 package com.example.fatcarbon.app;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import android.content.Context;
 
 import java.io.*;
 
 
 /**
- * Class DataWriter
+ * Class DataWriter for writing User class object into storage
  */
 public class UserDataWriter {
 
     private Context context;
 
-    //
-    // Fields
-    //
-
-
-    //
-    // Constructors
-    //
     public UserDataWriter(Context ctx) {
         context = ctx;
     }
-
-    ;
-
-    //
-    // Methods
-    //
-
-
-    //
-    // Accessor methods
-    //
-
-    //
-    // Other methods
-    //
-
 
     public void writeItem(User item) {
 
