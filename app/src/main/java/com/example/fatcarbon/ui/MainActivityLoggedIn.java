@@ -1,5 +1,13 @@
 package com.example.fatcarbon.ui;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -25,6 +33,10 @@ import java.util.ArrayList;
 
 public class MainActivityLoggedIn extends AppCompatActivity {
 
+    /**
+     * Activity for logged in functionality
+     */
+
     private AppBarConfiguration mAppBarConfiguration;
     FragmentManager manager = getSupportFragmentManager();
     DrawerLayout drawer;
@@ -36,6 +48,7 @@ public class MainActivityLoggedIn extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // set up the navigation drawer
         setContentView(R.layout.activity_main_logged_in);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,12 +69,6 @@ public class MainActivityLoggedIn extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main_activity_logged_in, menu);
-//        return true;
-//    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -70,15 +77,18 @@ public class MainActivityLoggedIn extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    // food search button functionality (in fragment:foods) TODO move into foods fragment
     public void foodSearch(View view) {
         EditText keyWord = findViewById(R.id.editTextFoodKeyword);
+        // Get data from Fineli Api with Search keyword.
         FineliApi searchApi = new FineliApi(keyWord.getText().toString());
         ArrayList<FoodItem> listItems = (searchApi.parseFineliData());
+        // create args to transfer Fineli data to next fragment
         Bundle args = new Bundle();
         args.putSerializable("list", listItems);
-        args.putSerializable("user", user);
         Fragment frag = new FoodSearchFragment();
         frag.setArguments(args);
+        // to FoodSearchFragment
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.foodsFragmentLayout, frag);
         transaction.commit();

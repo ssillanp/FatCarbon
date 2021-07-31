@@ -7,8 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.fatcarbon.app.FoodItem;
 import com.example.fatcarbon.R;
+import com.example.fatcarbon.app.FoodItem;
 import com.example.fatcarbon.app.User;
 
 import java.util.ArrayList;
@@ -44,9 +44,7 @@ public class FoodSearchFragment extends Fragment {
 
 
     public void onViewCreated(View view, Bundle savedInstanceState){
-        if (getArguments() != null) {
-            user = (User) getArguments().getSerializable("user");
-        }
+        user = (User) getActivity().getIntent().getSerializableExtra("user");
         recyclerViewFoodSearch = getView().findViewById(R.id.recyclerFoodSearchResults);
         ArrayList<FoodItem> listItems = (ArrayList<FoodItem>) getArguments().getSerializable("list");
         FoodListAdapter adapter = new FoodListAdapter(getActivity(), listItems, user);
