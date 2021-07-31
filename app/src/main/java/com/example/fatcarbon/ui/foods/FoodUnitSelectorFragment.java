@@ -1,5 +1,12 @@
 package com.example.fatcarbon.ui.foods;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +18,9 @@ import com.example.fatcarbon.app.FoodItem;
 import com.example.fatcarbon.R;
 import com.example.fatcarbon.app.User;
 
+/**
+ * Fragment for food units selecting, base for the recyclerView for units
+ */
 
 public class FoodUnitSelectorFragment extends Fragment {
 
@@ -21,9 +31,12 @@ public class FoodUnitSelectorFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // retrieve the user for intent
+        user = (User) getActivity().getIntent().getSerializableExtra("user");
+
+        // retrieve the food item from arguments
         if (getArguments() != null) {
             item = (FoodItem) getArguments().getSerializable("item");
-            user = (User) getArguments().getSerializable("user");
         }
     }
 
