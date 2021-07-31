@@ -1,5 +1,12 @@
 package com.example.fatcarbon.ui;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,8 +18,7 @@ import android.view.WindowManager;
 import com.example.fatcarbon.R;
 
 /**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
+ * Login screen fragment
  */
 public class LoginScreen extends Fragment {
 
