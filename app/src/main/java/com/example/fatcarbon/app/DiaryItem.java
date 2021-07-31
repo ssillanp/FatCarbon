@@ -1,7 +1,6 @@
 package com.example.fatcarbon.app;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 
 public abstract class DiaryItem implements Serializable {
@@ -22,12 +21,7 @@ public abstract class DiaryItem implements Serializable {
     }
 
     public void setDateNow(){
-        Date day = Calendar.getInstance().getTime();
-        day.setHours(0);
-        day.setMinutes(0);
-        day.setSeconds(0);
-        date = day;
-        System.out.println(date);
+         date = new Date();
     }
 
     public Object getItem() {

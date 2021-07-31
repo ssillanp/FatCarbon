@@ -57,14 +57,12 @@ public class WeightsFragment extends Fragment {
         weightGraph.getLegendRenderer().setVisible(false);
         ArrayList<DiaryItem> weights = user.getDiary().getWeightEntries();
         DataPoint[] pointsArray = new DataPoint[weights.size()];
-        DataPoint[] targetArray = new DataPoint[2];
-        targetArray[0] = new DataPoint(weights.get(0).getDate(),
-                ((WeightDiaryItem) weights.get(0)).getWeightValue() * 0.9);
-        targetArray[1] = new DataPoint(weights.get(weights.size()-1).getDate(),
-                ((WeightDiaryItem) weights.get(0)).getWeightValue() * 0.9);
+        DataPoint[] targetArray = new DataPoint[weights.size()];
         for (int i = 0; i < weights.size(); i++) {
             pointsArray[i] = new DataPoint(weights.get(i).getDate(),
                     ((WeightDiaryItem) weights.get(i)).getWeightValue());
+            targetArray[i] = new DataPoint(weights.get(0).getDate(),
+                    user.getTargetWeight());
         }
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(pointsArray);
         LineGraphSeries<DataPoint> seriesTarget = new LineGraphSeries<DataPoint>(targetArray);

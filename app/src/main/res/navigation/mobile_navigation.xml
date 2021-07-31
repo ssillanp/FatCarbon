@@ -28,4 +28,10 @@
         android:name="com.example.fatcarbon.ui.activity.ActivityFragment"
         android:label="@string/menu_activity_diary"
         tools:layout="@layout/fragment_activity" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.fatcarbon.ui.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

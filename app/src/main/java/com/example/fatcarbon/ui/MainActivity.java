@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
-import com.example.fatcarbon.*;
+import com.example.fatcarbon.R;
 import com.example.fatcarbon.app.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
 
 
-
     }
 
 
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         passWord.setText("aaa");
         User user = (User) new UserDataReader(context).readItem(userName.getText().toString());
         if (user != null) {
-            if (user.getPasswordHasher().validatePassword(passWord.getText().toString())){
+            if (user.getPasswordHasher().validatePassword(passWord.getText().toString())) {
                 Intent intent = new Intent(this, MainActivityLoggedIn.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.putExtra("user", user);
@@ -67,33 +66,45 @@ public class MainActivity extends AppCompatActivity {
         RadioButton male = findViewById(R.id.checkBoxMale);
         PasswordValidator pv = new PasswordValidator();
         boolean dataOK = true;
-        if (new UserDataReader(context).readItem(uname.getText().toString()) != null){
+        if (new UserDataReader(context).readItem(uname.getText().toString()) != null) {
             uname.setError(getString(R.string.user_exists));
             dataOK = false;
         }
-        if (uname.length() == 0){
+        if (uname.length() == 0) {
             uname.setError(getString(R.string.pl_enter_uname));
             dataOK = false;
         }
-        if (!pv.validatePassword(password.getText().toString())){
-            password.setError(getString(R.string.pl_enter_password));
-            dataOK = false;
-        }
-        if (dataOK){
+//        if (!pv.validatePassword(password.getText().toString())){
+//            password.setError(getString(R.string.pl_enter_password));
+//            dataOK = false;
+//        }
+        if (dataOK) {
             PasswordHasher hasher = new PasswordHasher(password.getText().toString());
             User user = new User(uname.getText().toString(), hasher);
             try {
                 user.setHeight(Double.parseDouble(height.getText().toString()));
                 user.setStartWeight(Double.parseDouble(weight.getText().toString()));
+                user.setTargetWeight(user.getStartWeight() * 0.9);
                 user.setAge(Integer.parseInt(age.getText().toString()));
-                switch (act_level.getProgress()){
-                    case 0: user.setActivityLevel(User.actLevel.INACTIVE);
-                    case 1: user.setActivityLevel(User.actLevel.OCCASIONAL);
-                    case 2: user.setActivityLevel(User.actLevel.REGULAR);
-                    case 3: user.setActivityLevel(User.actLevel.ACTIVE);
-                    case 4: user.setActivityLevel(User.actLevel.PRO);
+                switch (act_level.getProgress()) {
+                    case 0:
+                        user.setActivityLevel(User.actLevel.INACTIVE);
+                        break;
+                    case 1:
+                        user.setActivityLevel(User.actLevel.OCCASIONAL);
+                        break;
+                    case 2:
+                        user.setActivityLevel(User.actLevel.REGULAR);
+                        break;
+                    case 3:
+                        user.setActivityLevel(User.actLevel.ACTIVE);
+                        break;
+                    case 4:
+                        user.setActivityLevel(User.actLevel.PRO);
+                        break;
+
                 }
-                if (female.isSelected()){
+                if (female.isSelected()) {
                     user.setSex(User.sexes.FEMALE);
                 } else {
                     user.setSex(User.sexes.MALE);

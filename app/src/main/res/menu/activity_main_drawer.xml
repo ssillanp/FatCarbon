@@ -16,5 +16,8 @@
         <item
             android:id="@+id/nav_activity"
             android:title="@string/menu_activity_diary" />
+        <item
+            android:id="@+id/nav_settings"
+            android:title="@string/menu_settings" />
     </group>
 </menu>

@@ -2,6 +2,8 @@ package com.example.fatcarbon.app;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -19,9 +21,11 @@ public class User implements Serializable {
     private Diary diary;
     private double height;
     private double startWeight;
+    private double targetWeight;
     private double daily_calorie_base;
     private actLevel activityLevel;
     private sexes sex;
+
 
 
     public enum sexes {MALE, FEMALE}
@@ -126,6 +130,16 @@ public class User implements Serializable {
         activityLevel = level;
     }
 
+    public int getActivityLevelIndex() {
+        Map<actLevel, Integer> map = new HashMap();
+        int i=0;
+        for (actLevel obj:actLevel.values()){
+            map.put(obj, i);
+            i++;
+        }
+        return map.get(activityLevel);
+    }
+
     public void setSex(sexes sx) {
         sex = sx;
     }
@@ -159,6 +173,15 @@ public class User implements Serializable {
     public Diary getDiary() {
         return diary;
     }
+
+    public double getTargetWeight() {
+        return targetWeight;
+    }
+
+    public void setTargetWeight(double targetWeight) {
+        this.targetWeight = targetWeight;
+    }
+
 
 
     //

@@ -1,8 +1,10 @@
 package com.example.fatcarbon.app;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Class Diary
@@ -65,9 +67,10 @@ public class Diary implements Serializable {
 
     public ArrayList<DiaryItem> getFoodEntries(Date day) {
         ArrayList<DiaryItem> results = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy", new Locale("fi_FI"));
         for (DiaryItem item : this.entries) {
             if (item instanceof FoodDiaryItem) {
-                if (item.getDate().toString().equals(day.toString())){ //TODO fix dates
+                if (sdf.format(item.getDate()).equals(sdf.format(day))){ //TODO fix dates
                     results.add(item);
                 }
             }
@@ -87,9 +90,10 @@ public class Diary implements Serializable {
 
     public ArrayList<DiaryItem> getActivityEntries(Date day) {
         ArrayList<DiaryItem> results = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy", new Locale("fi_FI"));
         for (DiaryItem item : this.entries) {
             if (item instanceof ActivityDiaryItem) {
-                if (item.getDate().toString().equals(day.toString())){
+                if (sdf.format(item.getDate()).equals(sdf.format(day))){
                     results.add(item);
                 }
             }
@@ -97,24 +101,16 @@ public class Diary implements Serializable {
         return results;
     }
 
-    public double getDailyCalIntake() {
+    public double getDailyCalIntake(Date day) {
         double dci = 0;
-        Date day = new Date();
-        day.setHours(0);
-        day.setMinutes(0);
-        day.setSeconds(0);
         for (DiaryItem item:this.getFoodEntries(day)){
             dci += item.getAmount() / 100 * ((FoodItem) item.getItem()).getEnergyKcal();
         }
         return dci;
     }
 
-    public double getDailyEnergyBurnt(double weight) {
+    public double getDailyEnergyBurnt(Date day, double weight) {
         double deb = 0;
-        Date day = new Date();
-        day.setHours(0);
-        day.setMinutes(0);
-        day.setSeconds(0);
         for (DiaryItem item:this.getActivityEntries(day)){
             deb += ((ActivityDiaryItem) item).getCalories(weight);
         }

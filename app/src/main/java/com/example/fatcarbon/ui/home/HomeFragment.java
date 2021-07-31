@@ -16,6 +16,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
@@ -33,8 +34,9 @@ public class HomeFragment extends Fragment {
         test.setText("Welcome " + user.getUsername());
         TextView date = root.findViewById(R.id.text_home_date);
         Date now = Calendar.getInstance().getTime();
-        SimpleDateFormat format = new SimpleDateFormat("dd.M.yyyy");
-        date.setText(format.format(now));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.M.yyyy", new Locale("fi_FI"));
+        System.out.println(sdf.format(now));
+        date.setText(sdf.format(now));
         TextView calInTd = root.findViewById(R.id.textViewCalEatenKcal);
         TextView calInTdPct = root.findViewById(R.id.textViewCalEatenPrcent);
         TextView calBrntTd = root.findViewById(R.id.textViewCalBurntKcal);
@@ -42,12 +44,12 @@ public class HomeFragment extends Fragment {
         TextView wghtToTrgt = root.findViewById(R.id.textViewWeightToTarget);
         DecimalFormat df = new DecimalFormat("#0");
         DecimalFormat dfp = new DecimalFormat("#0.0");
-        calInTd.setText(String.valueOf(df.format(user.getDiary().getDailyCalIntake()) + " kCal"));
-        calInTdPct.setText(String.valueOf(dfp.format(user.getDiary().getDailyCalIntake()
+        calInTd.setText(String.valueOf(df.format(user.getDiary().getDailyCalIntake(now)) + " kCal"));
+        calInTdPct.setText(String.valueOf(dfp.format(user.getDiary().getDailyCalIntake(now)
                 / user.calculateBaseCalories() * 100)) + "%");
-        calBrntTd.setText(String.valueOf(df.format(user.getDiary().getDailyEnergyBurnt(user.getCurrentWeight()))) + " kCal");
+        calBrntTd.setText(String.valueOf(df.format(user.getDiary().getDailyEnergyBurnt(now, user.getCurrentWeight()))) + " kCal");
         wghtTd.setText(String.valueOf(user.getCurrentWeight()) + " kg");
-        wghtToTrgt.setText(String.valueOf(user.getCurrentWeight() - user.getStartWeight() * 0.9) + " kg");
+        wghtToTrgt.setText(String.valueOf((user.getCurrentWeight()) -user.getTargetWeight()) + " kg");
 
         return root;
     }

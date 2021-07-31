@@ -51,6 +51,17 @@
     <string name="calories_burnt_today">Extra calories burnt today</string>
     <string name="weight_today">Today\'s weight</string>
     <string name="weight_toGo">to target</string>
+    <string name="settings">Settings</string>
+    <string name="old_passwd">Old password</string>
+    <string name="new_passwd">New password</string>
+    <string name="repeat_pwd">Repeat new password</string>
+    <string name="save">Save changes</string>
+    <string name="change_pwd">Change password</string>
+    <string name="set_target_weight">Set target weight</string>
+    <string name="set_act_level">Set activity level</string>
+    <string name="menu_settings">Settings</string>
+    <string name="pwd_wrong">Wrong password</string>
+    <string name="pwd_not_match">Passwords do not match</string>
     <string-array name="mets">
         <item>Select Activity</item>
         <item>Light work</item>
