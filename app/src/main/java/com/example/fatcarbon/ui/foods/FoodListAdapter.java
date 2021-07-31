@@ -1,5 +1,12 @@
 package com.example.fatcarbon.ui.foods;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +25,10 @@ import com.example.fatcarbon.app.User;
 import com.example.fatcarbon.ui.MainActivityLoggedIn;
 
 import java.util.ArrayList;
+
+/**
+ * RecyclerView adapter for the food list items
+ */
 
 public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.MyViewHolder>{
 
@@ -42,13 +53,13 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         myViewHolder.text1.setText(itemsList.get(i).getName());
-//        myViewHolder.text1.setText(itemsList.get(i).getUnits().toString());
+
+        // listener for row click, pass the selected food item to unit selector
         myViewHolder.mainLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Bundle args = new Bundle();
                 args.putSerializable("item",  itemsList.get(i));
-                args.putSerializable("user", user);
                 Fragment frag = new FoodUnitSelectorFragment();
                 frag.setArguments(args);
                 FragmentTransaction transaction = ((MainActivityLoggedIn) context).getSupportFragmentManager().
@@ -72,7 +83,6 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.MyView
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             text1 = itemView.findViewById(R.id.textFoodListItem);
-//            text2 = itemView.findViewById(R.id.textFoodListUnit);
             mainLayout = itemView.findViewById(R.id.mainLayout);
         }
     }
