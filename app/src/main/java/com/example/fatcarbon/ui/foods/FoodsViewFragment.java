@@ -1,5 +1,13 @@
 package com.example.fatcarbon.ui.foods;
 
+
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,8 +22,7 @@ import com.example.fatcarbon.app.User;
 import java.util.ArrayList;
 
 /**
- * A simple {@link Fragment} subclass.
- * create an instance of this fragment.
+ * Fragment to hole the food view recyclerView
  */
 public class FoodsViewFragment extends Fragment {
 
@@ -43,8 +50,10 @@ public class FoodsViewFragment extends Fragment {
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState){
+        // retrieve user form intent
         user = (User) getActivity().getIntent().getSerializableExtra("user");
         recyclerTodaysFood = getView().findViewById(R.id.recyclerTodaysFood);
+        // get the list og food entries from user.diary
         ArrayList<DiaryItem> listItems = user.getDiary().getFoodEntries();
         TodaysFoodListAdapter adapter = new TodaysFoodListAdapter(getActivity(), listItems, user);
         recyclerTodaysFood.setAdapter(adapter);
