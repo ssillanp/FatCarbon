@@ -9,7 +9,7 @@ public class PasswordValidator {
     // Fields
     //
     private final int min_length = 12;
-    private final String specialChars = " \"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+    private final String specialChars = " \"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~!";
 
     //
     // Constructors

@@ -64,6 +64,8 @@
     <string name="pwd_not_match">Passwords do not match</string>
     <string name="fill_all_values">Fill all values</string>
     <string name="sex_must_selected">Sex must be selected</string>
+    <string name="password_changed">Your password is changed</string>
+    <string name="settings_saved">Settings are now saved</string>
     <string-array name="mets">
         <item>Select Activity</item>
         <item>Light work</item>
