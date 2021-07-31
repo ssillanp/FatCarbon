@@ -43,9 +43,7 @@ public class FoodsViewFragment extends Fragment {
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState){
-        if (getArguments() != null) {
-            user = (User) getArguments().getSerializable("user");
-        }
+        user = (User) getActivity().getIntent().getSerializableExtra("user");
         recyclerTodaysFood = getView().findViewById(R.id.recyclerTodaysFood);
         ArrayList<DiaryItem> listItems = user.getDiary().getFoodEntries();
         TodaysFoodListAdapter adapter = new TodaysFoodListAdapter(getActivity(), listItems, user);

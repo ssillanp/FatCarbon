@@ -1,8 +1,14 @@
 package com.example.fatcarbon.ui.foods;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
@@ -16,13 +22,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.example.fatcarbon.*;
+import com.example.fatcarbon.R;
 import com.example.fatcarbon.app.FoodDiaryItem;
 import com.example.fatcarbon.app.FoodItem;
 import com.example.fatcarbon.app.User;
 import com.example.fatcarbon.app.UserDataWriter;
 import com.example.fatcarbon.ui.MainActivityLoggedIn;
 
+
+/**
+ * RecyclerView adapter for Food items unit (portion) selection
+ */
 public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyViewHolder> {
 
     FoodItem item;
@@ -45,43 +55,46 @@ public class UnitListAdapter extends RecyclerView.Adapter<UnitListAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, @SuppressLint("RecyclerView") int i) {
+        // Set text for Unit description
         myViewHolder.text1.setText(item.getUnits().get(myViewHolder.getAdapterPosition())[0]);
+        // Set text for unit Unit
         myViewHolder.text2.setText(item.getUnits().get(myViewHolder.getAdapterPosition())[1] + "g");
-
+        // Set click listener for the add button
         myViewHolder.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // get the portion size in grams for the FoodItem Unit
                 Double foodPortion = Double.parseDouble(item.getUnits().get(myViewHolder.getAdapterPosition())[1]);
+
+                // the factor for Unit (foodPortion = 100g, foodPortionFactor = 2 -> total 200g)
                 int foodPortionFactor;
+                // get the factor from input, set to 1 in nothing is entered
                 if (!myViewHolder.textPortions.getText().toString().equals("")) {
                     foodPortionFactor = Integer.parseInt(myViewHolder.textPortions.getText().toString());
                 } else {
                     foodPortionFactor = 1;
                 }
+
+                // Add new diary item
                 FoodDiaryItem fdi = new FoodDiaryItem();
                 fdi.setItem(item);
                 fdi.setDateNow();
                 fdi.setAmount(foodPortion * foodPortionFactor);
                 user.getDiary().addEntry(fdi);
+
+                // save User
                 UserDataWriter udw = new UserDataWriter(context);
                 udw.writeItem(user);
-                Bundle args = new Bundle();
-                args.putSerializable("user", user);
+
+                // to next fragment (FoodsViewFragment)
                 Fragment fv = new FoodsViewFragment();
-                fv.setArguments(args);
                 FragmentManager manager = ((MainActivityLoggedIn) context).getSupportFragmentManager();
                 FragmentTransaction tranact = manager.beginTransaction();
                 tranact.replace(R.id.foodsFragmentLayout, fv);
                 tranact.commit();
             }
         });
-        //        myViewHolder.mainLayout.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
 
-//
-//            }
-//        });
     }
 
     @Override
