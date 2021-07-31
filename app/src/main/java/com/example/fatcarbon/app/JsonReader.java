@@ -1,9 +1,20 @@
 package com.example.fatcarbon.app;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.ProtocolException;
 import java.net.URL;
+
+/**
+ * class for reading a Json response from given REST API url
+ */
 
 public class JsonReader {
 
@@ -18,6 +29,10 @@ public class JsonReader {
     }
 
     public String getJSON() {
+        /**
+         * Method reads the response from URL
+         * @return String JSON
+         */
         String response = null;
         try {
             HttpsURLConnection conn;
