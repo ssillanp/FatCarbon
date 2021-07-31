@@ -1,7 +1,18 @@
 package com.example.fatcarbon.app;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import java.io.Serializable;
 import java.util.Date;
+
+/**
+ * Abstract class for all diary items
+ */
 
 public abstract class DiaryItem implements Serializable {
 
