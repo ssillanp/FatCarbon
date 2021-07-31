@@ -1,5 +1,12 @@
 package com.example.fatcarbon.ui.foods;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,8 +21,7 @@ import com.example.fatcarbon.app.User;
 import java.util.ArrayList;
 
 /**
- * A simple {@link Fragment} subclass.
- * create an instance of this fragment.
+ * Fragment to hold the Food search recyclerView
  */
 public class FoodSearchFragment extends Fragment {
 
