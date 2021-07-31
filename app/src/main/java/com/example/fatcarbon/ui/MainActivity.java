@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.putExtra("user", user);
                 startActivity(intent);
+            } else {
+                // show field error if password wrong
+                passWord.setError(getString(R.string.pwd_wrong));
             }
             // if user does not exist, show message
         } else {
@@ -98,19 +101,19 @@ public class MainActivity extends AppCompatActivity {
             dataOK = false;
         }
         //check that all fields are filled
-        if (!height.getText().toString().equals("")){
+        if (height.getText().toString().equals("")){
             height.setError(getString(R.string.fill_all_values));
             dataOK = false;
         }
-        if (!weight.getText().toString().equals("")){
+        if (weight.getText().toString().equals("")){
             weight.setError(getString(R.string.fill_all_values));
             dataOK = false;
         }
-        if (!age.getText().toString().equals("")){
+        if (age.getText().toString().equals("")){
             age.setError(getString(R.string.fill_all_values));
             dataOK = false;
         }
-        if (!female.isSelected()&!male.isSelected()){
+        if (female.isSelected()&!male.isSelected()){
             female.setError(getString(R.string.sex_must_selected));
             dataOK = false;
         }

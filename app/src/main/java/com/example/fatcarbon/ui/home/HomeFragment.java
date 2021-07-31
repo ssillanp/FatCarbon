@@ -61,14 +61,19 @@ public class HomeFragment extends Fragment {
         // set the display value for today calorie intake
         calInTd.setText(String.valueOf(df.format(user.getDiary().getDailyCalIntake(now)) + " kCal"));
         // set the dusplay value for calorie intake precentage of daily recommended calories
-        calInTdPct.setText(String.valueOf(dfp.format(user.getDiary().getDailyCalIntake(now)
-                / user.calculateBaseCalories() * 100)) + "%");
+        calInTdPct.setText(String.format("%s%%", String.valueOf(
+                dfp.format(user.getDiary().getDailyCalIntake(now) / user.calculateBaseCalories() * 100)
+        )));
         // set the display text for calories burnt in days activities
-        calBrntTd.setText(String.valueOf(df.format(user.getDiary().getDailyEnergyBurnt(now, user.getCurrentWeight()))) + " kCal");
+        calBrntTd.setText(String.format("%s kCal", String.valueOf(
+                df.format(user.getDiary().getDailyEnergyBurnt(now, user.getCurrentWeight()))
+        )));
         // set the display text for current weight
-        wghtTd.setText(String.valueOf(user.getCurrentWeight()) + " kg");
+        wghtTd.setText(String.format("%s kg", String.valueOf(user.getCurrentWeight())));
         // set the display text for deviation from weight target
-        wghtToTrgt.setText(String.valueOf((user.getCurrentWeight()) -user.getTargetWeight()) + " kg");
+        wghtToTrgt.setText(String.format("%s kg", String.valueOf(
+                dfp.format((user.getCurrentWeight()) - user.getTargetWeight())
+        )));
 
         return root;
     }
