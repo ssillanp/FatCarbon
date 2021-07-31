@@ -1,5 +1,12 @@
 package com.example.fatcarbon.app;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,13 +14,10 @@ import java.util.Map;
 
 
 /**
- * Class User
+ * Class User, holds all the data of a user
  */
 public class User implements Serializable {
 
-    //
-    // Fields
-    //
 
     private final String username;
     private PasswordHasher passwordHasher;
@@ -25,7 +29,6 @@ public class User implements Serializable {
     private double daily_calorie_base;
     private actLevel activityLevel;
     private sexes sex;
-
 
 
     public enum sexes {MALE, FEMALE}
@@ -44,70 +47,42 @@ public class User implements Serializable {
         }
     }
 
-    //
-    // Constructors
-    //
+    //    default constructor
     User() {
-        username = "test";
         diary = new Diary();
     }
 
+    // constructor with basic parameters
     public User(String user, PasswordHasher hasher) {
         username = user;
         passwordHasher = hasher;
         diary = new Diary();
     }
 
-    //
-    // Methods
-    //
-
-    /**
-     * Get the value of username
-     *
-     * @return the value of username
-     */
     public String getUsername() {
         return username;
     }
 
-    /**
-     * Set the value of passwordHasher
-     *
-     * @param newVar the new value of passwordHasher
-     */
     public void setPasswordHasher(PasswordHasher newVar) {
         passwordHasher = newVar;
     }
 
-    /**
-     * Get the value of passwordHasher
-     *
-     * @return the value of passwordHasher
-     */
     public PasswordHasher getPasswordHasher() {
         return passwordHasher;
     }
 
-    /**
-     * Set the value of age
-     *
-     * @param newVar the new value of age
-     */
     public void setAge(int newVar) {
         age = newVar;
     }
 
-    /**
-     * Get the value of age
-     *
-     * @return the value of age
-     */
     public int getAge() {
         return age;
     }
 
     public void setStartWeight(double startWeight) {
+        /**
+         * Method sets the start weight and adds entry in diary
+         */
         this.startWeight = startWeight;
         WeightDiaryItem wdi = new WeightDiaryItem();
         wdi.setWeightValue(startWeight);
@@ -115,25 +90,30 @@ public class User implements Serializable {
         this.diary.addEntry(wdi);
     }
 
-    public double getStartWeight(){
+    public double getStartWeight() {
         return this.startWeight;
     }
 
-    public double getCurrentWeight(){
+    public double getCurrentWeight() {
+        /**
+         * Method gets the last weight value from diary and returns it
+         */
         ArrayList<DiaryItem> entries = this.getDiary().getWeightEntries();
-        return ((WeightDiaryItem) entries.get(entries.size() -1)).getWeightValue();
+        return ((WeightDiaryItem) entries.get(entries.size() - 1)).getWeightValue();
 
     }
-
 
     public void setActivityLevel(actLevel level) {
         activityLevel = level;
     }
 
     public int getActivityLevelIndex() {
+        /**
+         * method returns the activity level as an index
+         */
         Map<actLevel, Integer> map = new HashMap();
-        int i=0;
-        for (actLevel obj:actLevel.values()){
+        int i = 0;
+        for (actLevel obj : actLevel.values()) {
             map.put(obj, i);
             i++;
         }
@@ -145,6 +125,10 @@ public class User implements Serializable {
     }
 
     public double calculateBaseCalories() {
+        /**
+         * Method calculates the base calorie consumption based on user data
+         * ref https://en.wikipedia.org/wiki/Harris%E2%80%93Benedict_equation
+         */
         if (sex == sexes.FEMALE) {
             return (447.593 + (9.247 * startWeight) + (3.098 * height) - (4.330 * age)) * activityLevel.coeff;
         } else {
@@ -152,20 +136,10 @@ public class User implements Serializable {
         }
     }
 
-    /**
-     * Set the value of height
-     *
-     * @param newVar the new value of height
-     */
-    public void setHeight(double newVar) {
+     public void setHeight(double newVar) {
         height = newVar;
     }
 
-    /**
-     * Get the value of height
-     *
-     * @return the value of height
-     */
     public double getHeight() {
         return height;
     }
@@ -182,19 +156,10 @@ public class User implements Serializable {
         this.targetWeight = targetWeight;
     }
 
-
-
-    //
-    // Other methods
-    //
-
-    /**
-     * @param user
-     * @param password
-     * @return User
-     */
-
     public User validateUser(String user, String password) {
+        /**
+         * Method for validating the user with username and password
+         */
         if (username.equals(user)) {
             if (passwordHasher.validatePassword(password)) {
                 return this;
