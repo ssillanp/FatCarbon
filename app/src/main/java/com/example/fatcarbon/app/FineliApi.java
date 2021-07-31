@@ -1,5 +1,11 @@
 package com.example.fatcarbon.app;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,80 +21,34 @@ import java.util.ArrayList;
  */
 public class FineliApi {
 
-    //
-    // Fields
-    //
-
     private URL url;
     private final String keyword;
 
 
-    //
-    // Constructors
-    //
     public FineliApi(String keywrd) {
-        keyword = keywrd;
+        keyword = keywrd; //Keyword to use for search
         url = null;
         try {
+            //build the URL with the keyword
             url = new URL("https://fineli.fi/fineli/api/v1/foods?q=" + keyword);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
     }
 
-    ;
-
-    //
-    // Methods
-    //
 
 
-    //
-    // Accessor methods
-    //
-
-//    /**
-//     * Set the value of url
-//     * @param newVar the new value of url
-//     */
-//    public void setUrl (URL newVar) {
-//        url = newVar;
-//    }
-//
-//    /**
-//     * Get the value of url
-//     * @return the value of url
-//     */
-//    public URL getUrl () {
-//        return url;
-//    }
-//
-//    //
-    // Other methods
-    //
-
-    /**
-     * @param foodItemName
-     */
-    public void getItemData(String foodItemName) {
-    }
-
-
-    /**
-     *
-     */
-    public void getAvailableItems() {
-    }
-
-    /*
-    Method parses Food items from Fineli API Json string and creates FoodItem objects and add in list.
-    Returns List of items.
-     */
     public ArrayList<FoodItem> parseFineliData() {
+        /**
+         *Method parses Food items from Fineli API Json string and creates FoodItem objects and add in list.
+         *@return ArrayList<FoodItem> list of items
+         */
 
+        // get the response from Json reader
         JsonReader jr = new JsonReader(url);
         String json = jr.getResponse();
 
+        //parse the food items  TODO change to parse only selected item from food search fragment
         ArrayList<FoodItem> resultList = new ArrayList<>();
         try {
             JSONArray array = new JSONArray(json);
@@ -138,14 +98,6 @@ public class FineliApi {
         return resultList;
     }
 
-    public ArrayList<String> parseFineliDataStr(){
-        ArrayList<String> list = new ArrayList<>();
-        ArrayList<FoodItem> itemsList =  parseFineliData();
-        for (FoodItem item:itemsList){
-            list.add(item.getName());
-        }
-        return list;
-    }
 
 
 }
