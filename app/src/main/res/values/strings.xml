@@ -62,6 +62,8 @@
     <string name="menu_settings">Settings</string>
     <string name="pwd_wrong">Wrong password</string>
     <string name="pwd_not_match">Passwords do not match</string>
+    <string name="fill_all_values">Fill all values</string>
+    <string name="sex_must_selected">Sex must be selected</string>
     <string-array name="mets">
         <item>Select Activity</item>
         <item>Light work</item>
