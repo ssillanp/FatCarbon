@@ -1,5 +1,12 @@
 package com.example.fatcarbon.ui.activity;
 
+/**************************************
+ LUT Olio-ohjelmointi Harjoitustyö
+ @author Sami Sillanpää
+ @copyright Sami Sillanpää 2021
+ @licence GNU GPL3.0
+ **************************************/
+
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -19,9 +26,16 @@ import com.example.fatcarbon.app.UserDataWriter;
 
 import java.sql.Time;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+
+/**
+ * Fragment for activities
+ */
 
 public class ActivityFragment extends Fragment {
 
@@ -38,8 +52,13 @@ public class ActivityFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         root = inflater.inflate(R.layout.fragment_activity, container, false);
+
+        //retrieve user from intent
         user = (User) getActivity().getIntent().getSerializableExtra("user");
+
+        //initialize the activity selector drop down
         activitySelector = root.findViewById(R.id.spinnerActSelect);
+        //set the drop down menu items from predefined string array (@string/mets)
         ArrayAdapter<String> adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item,
                 getResources().getStringArray(R.array.mets));
         activitySelector.setAdapter(adapter);
@@ -51,7 +70,9 @@ public class ActivityFragment extends Fragment {
         EditText setStartTime = root.findViewById(R.id.editTextActivityStartTime);
         EditText setEndTime = root.findViewById(R.id.editTextActivityEndTime);
         Button addActvity = root.findViewById(R.id.buttonAddActivity);
-        recyclerActivity = getView().findViewById(R.id.activity_recycler);
+        recyclerActivity = root.findViewById(R.id.activity_recycler);
+
+        // set listener for date editText (selector)
         setDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,19 +82,29 @@ public class ActivityFragment extends Fragment {
                     int mMonth = calendar.get(Calendar.MONTH);
                     int mDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-                    //show dialog
+                    //show date picker dialog
                     DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity()
                             , new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            setDate.setText(dayOfMonth + "." + (month + 1) + "." + year);
-                            acDate = new Date(year-1900, month, dayOfMonth);
+                            setDate.setText(String.format("%d.%d.%d", dayOfMonth, month + 1, year));
+                            SimpleDateFormat format =
+                                    new SimpleDateFormat("dd.MM.yyyy", new Locale("fi_FI"));
+                            try {
+                                // set tha acDate for activity date value
+                                acDate = format.parse(setDate.getText().toString());
+                                System.out.println(acDate);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }, mYear, mMonth, mDay);
                     datePickerDialog.show();
                 }
             }
         });
+
+        //set listener for time setting fields
         View.OnClickListener timeListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,10 +118,10 @@ public class ActivityFragment extends Fragment {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         DecimalFormat df = new DecimalFormat("00");
                         if (v == setStartTime) {
-                            setStartTime.setText(df.format(hourOfDay) + ":" + df.format(minute));
+                            setStartTime.setText(String.format("%s:%s", df.format(hourOfDay), df.format(minute)));
                             stTime = new Time(hourOfDay, minute, 0);
                         } else if (v == setEndTime) {
-                            setEndTime.setText(df.format(hourOfDay) + ":" + df.format(minute));
+                            setEndTime.setText(String.format("%s:%s", df.format(hourOfDay), df.format(minute)));
                             enTime = new Time(hourOfDay, minute, 0);
                         }
                     }
@@ -102,27 +133,37 @@ public class ActivityFragment extends Fragment {
         };
         setStartTime.setOnClickListener(timeListener);
         setEndTime.setOnClickListener(timeListener);
+
+        // set listener for activity add button
         addActvity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // ensure that none of the required fields are empty
                 if (acDate != null & stTime != null & enTime != null & activitySelector.getSelectedItemId() != 0) {
 
+                    // create new diary entry activity
                     ActivityDiaryItem adi = new ActivityDiaryItem();
                     adi.setDuration(enTime.getTime() - stTime.getTime());
                     adi.setSport(activitySelector.getSelectedItem().toString()
                             , ((int) activitySelector.getSelectedItemId()) - 1);
                     adi.setDate(acDate);
                     user.getDiary().addEntry(adi);
+
+                    // save user
                     UserDataWriter udw = new UserDataWriter(getActivity());
                     udw.writeItem(user);
+
+                    //  update the recycler view
                     updateActivityView();
 
                 }
             }
         });
+        // update the recycler view
         updateActivityView();
     }
 
+    // function updates the activity recycler view
     public void updateActivityView(){
         ArrayList<DiaryItem> listItems = user.getDiary().getActivityEntries();
         ActivityAdapter adapter = new ActivityAdapter(getActivity(), listItems, user);
